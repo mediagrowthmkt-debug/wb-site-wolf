@@ -1165,13 +1165,19 @@ h4 { font-size: 1rem; }
   .nav__links, .nav__cta { display: none; }
   .hamburger { display: flex; }
   .topbar { display: none; }
-  .hero { min-height: 85vh; }
+  .hero { min-height: 120vh; }
   .hero__bg {
     background: 
       linear-gradient(105deg, rgba(10,10,10,.60) 45%, rgba(10,10,10,.20) 100%),
-      url('../images/Cabecalho-02B-mobile-new-scaled.jpg') center/cover no-repeat;
+      url('../images/Cabecalho-02B-mobile-new-scaled.jpg') center top -10px/cover no-repeat;
   }
-  .hero__badges { flex-wrap: wrap; gap: 16px; }
+  .hero .container {
+    padding-top: 180px;
+  }
+  .hero__content {
+    padding-top: 0;
+  }
+  .hero__badges { flex-wrap: wrap; gap: 16px; margin-bottom: 80px; }
   .hero__badge-divider { display: none; }
   .about-home__badge { bottom: -20px; right: 12px; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -1183,6 +1189,7 @@ h4 { font-size: 1rem; }
 
 @media (max-width: 540px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-card { aspect-ratio: 3/5; }
   .services-full-grid { grid-template-columns: 1fr 1fr; }
   .grid-3, .why-us__grid, .values-grid, .testimonials__grid, .stats-bar__grid { grid-template-columns: 1fr; }
   .photo-carousel__slide { flex: 0 0 calc(50% - 6px); }
