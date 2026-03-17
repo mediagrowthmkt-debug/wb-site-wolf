@@ -1,5 +1,5 @@
 /* ============================================================
-   WOLF CARPENTERS — Modern Redesign
+   WOLF CARPENTERS | Modern Redesign
    Color Palette:
      --black:   #0a0a0a
      --dark:    #111111
@@ -227,24 +227,44 @@ h4 { font-size: 1rem; }
 .nav__dropdown { position: relative; }
 .nav__dropdown > a { display: flex; align-items: center; gap: 6px; }
 .nav__dropdown > a svg { width: 10px; height: 10px; fill: currentColor; transition: transform var(--transition); }
-.nav__dropdown:hover > a svg { transform: rotate(180deg); }
+.nav__dropdown:hover > a svg,
+.nav__dropdown--open > a svg { transform: rotate(180deg); }
 
 .dropdown-menu {
-  display: none;
+  /* layout always grid — visibility toggled via opacity/visibility */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+
   position: absolute;
-  top: calc(100% + 16px);
+  top: 100%;                   /* flush to parent bottom… */
+  padding-top: 16px;           /* …gap lives inside the hover zone */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-6px);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   width: 900px;
-  padding: 28px;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-bottom: 28px;
   box-shadow: 0 20px 60px rgba(0,0,0,.6);
+
+  /* hidden state */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
-.nav__dropdown:hover .dropdown-menu { display: grid; }
+
+/* open: via hover (desktop) or .nav__dropdown--open class (mobile JS) */
+.nav__dropdown:hover .dropdown-menu,
+.nav__dropdown--open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
 
 .dropdown-item {
   display: flex;
@@ -801,7 +821,7 @@ h4 { font-size: 1rem; }
 .why-card__num {
   font-size: 3.5rem;
   font-weight: 900;
-  color: rgba(225,186,72,.12);
+  color: var(--gold);
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -817,8 +837,8 @@ h4 { font-size: 1rem; }
 .cta-banner__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  justify-content: center;
+  gap: 100px;
   flex-wrap: wrap;
 }
 .cta-banner h2 { color: var(--black); margin: 0; }
@@ -831,9 +851,140 @@ h4 { font-size: 1rem; }
 }
 .cta-banner .btn--dark:hover { background: #1a1a1a; }
 
+.cta-banner__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(0,0,0,.6);
+  margin-bottom: 6px;
+}
+.cta-banner__sub { margin-top: 8px; }
+.cta-banner__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  flex-shrink: 0;
+  min-width: 220px;
+}
+.cta-banner__phone {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--black);
+  transition: opacity var(--transition);
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(0,0,0,.18);
+  width: 100%;
+}
+.cta-banner__phone:hover { opacity: 0.75; }
+.cta-banner__phone-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(0,0,0,.13);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cta-banner__phone-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--black);
+}
+.cta-banner__phone-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.65;
+}
+.cta-banner__phone-num {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
 /* ── Testimonials ─────────────────────────────────────────── */
 .testimonials { background: var(--black); }
 .testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* ── Review Screenshot Cards ──────────────────────────────── */
+.reviews-screenshots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+  align-items: start;      /* cards não esticam verticalmente */
+}
+.review-screenshot-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 24px rgba(0,0,0,.35);
+}
+.review-screenshot-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(225,186,72,.4);
+  box-shadow: 0 16px 48px rgba(0,0,0,.55);
+}
+.review-screenshot-card__stars {
+  display: flex;
+  gap: 4px;
+  padding: 0 2px;
+}
+.review-screenshot-card__stars svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--gold);
+}
+.review-screenshot-card a {
+  display: block;
+  line-height: 0;          /* remove espaço extra abaixo da img */
+  border-radius: 10px;
+  overflow: hidden;
+}
+.review-screenshot-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.review-screenshot-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px 0;
+  border-top: 1px solid var(--border);
+  gap: 8px;
+}
+.review-screenshot-card__name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.review-screenshot-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
 .testi-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -859,6 +1010,84 @@ h4 { font-size: 1rem; }
 .testi-name { font-weight: 700; font-size: 0.9rem; }
 .testi-location { font-size: 0.78rem; color: var(--gray); }
 
+/* ── Google Reviews dynamic cards ─────────────────────────── */
+/* Top row: stars (left) + Google badge (right) */
+.testi-card__toprow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.testi-card__toprow .testi-stars { margin-bottom: 0; }
+.testi-star { display: inline-flex; }
+.testi-star svg { width: 16px; height: 16px; }
+.testi-star--filled svg { fill: var(--gold); }
+.testi-star--empty  svg { fill: var(--border); }
+
+/* "Google" badge link on each card */
+.testi-google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  opacity: .65;
+  transition: opacity .2s;
+  flex-shrink: 0;
+}
+.testi-google-badge:hover { opacity: 1; }
+.testi-google-label {
+  font-size: 0.68rem;
+  color: var(--gray);
+  font-weight: 500;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+/* Real profile photo as CSS background on the avatar div */
+.testi-avatar--photo {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0; /* hide initials when photo is shown */
+}
+
+/* ── Skeleton loader ──────────────────────────────────────── */
+@keyframes wolfShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.testi-skel { pointer-events: none; cursor: default; }
+
+.testi-skel__stars,
+.testi-skel__line,
+.testi-skel__avatar {
+  background: linear-gradient(
+    90deg,
+    var(--border) 25%,
+    rgba(255, 255, 255, .05) 50%,
+    var(--border) 75%
+  );
+  background-size: 400px 100%;
+  animation: wolfShimmer 1.6s ease infinite;
+  border-radius: 4px;
+}
+
+.testi-skel__stars      { height: 16px; width: 90px;  margin-bottom: 20px; border-radius: 8px; }
+.testi-skel__line       { height: 11px; margin-bottom: 10px; }
+.testi-skel__line--lg   { width: 100%; }
+.testi-skel__line--md   { width: 78%; }
+.testi-skel__line--sm   { width: 52%; margin-bottom: 24px; }
+.testi-skel__line--name { width: 110px; margin-bottom: 7px; }
+.testi-skel__line--loc  { width: 72px; }
+
+.testi-skel__author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.testi-skel__avatar { width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0; }
+.testi-skel__meta   { flex: 1; }
+
 /* ── Footer ───────────────────────────────────────────────── */
 .site-footer { background: var(--black); border-top: 1px solid var(--border); }
 .footer-main { padding: 80px 0 48px; }
@@ -867,7 +1096,7 @@ h4 { font-size: 1rem; }
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
   gap: 48px;
 }
-.footer-brand__logo { height: 60px; margin-bottom: 20px; }
+.footer-brand__logo { height: 60px; width: auto; max-width: 180px; object-fit: contain; margin-bottom: 20px; }
 .footer-brand p { color: var(--gray); font-size: 0.9rem; line-height: 1.8; margin-bottom: 24px; max-width: 300px; }
 .footer-socials { display: flex; gap: 12px; }
 .footer-social {
@@ -1403,6 +1632,7 @@ h4 { font-size: 1rem; }
 @media (max-width: 900px) {
   .grid-2 { grid-template-columns: 1fr; gap: 48px; }
   .grid-3, .why-us__grid, .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews-screenshots { grid-template-columns: repeat(2, 1fr); }
   .stats-bar__grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1418,7 +1648,8 @@ h4 { font-size: 1rem; }
   .ba-grid { grid-template-columns: 1fr; }
   .footer-map-section__inner { grid-template-columns: 1fr; }
   .footer-reviews { border-left: none; border-top: 1px solid var(--border); }
-  .cta-banner__actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cta-banner__actions { min-width: 0; width: 100%; }
+  .cta-banner__phone { margin-top: 16px; padding-top: 16px; }
 }
 
 @media (max-width: 600px) {
@@ -1448,7 +1679,9 @@ h4 { font-size: 1rem; }
   .about-home__badge { bottom: -20px; right: 12px; }
   .footer-grid { grid-template-columns: 1fr; }
   .cta-banner__inner { flex-direction: column; align-items: flex-start; }
-  .dropdown-menu { position: fixed; width: 100%; left: 0; transform: none; top: 100%; border-radius: 0; }
+  .dropdown-menu { position: fixed; width: 100%; left: 0; top: 100%; border-radius: 0; transform: translateY(-6px); }
+  .nav__dropdown:hover .dropdown-menu,
+  .nav__dropdown--open .dropdown-menu { transform: translateY(0); }
   .contact-map { height: 300px; }
   .nav__logo img { height: 90px; margin-top: -14px; margin-bottom: -14px; }
 }
@@ -1458,6 +1691,7 @@ h4 { font-size: 1rem; }
   .service-card { aspect-ratio: 3/5; }
   .services-full-grid { grid-template-columns: 1fr 1fr; }
   .grid-3, .why-us__grid, .values-grid, .testimonials__grid, .stats-bar__grid { grid-template-columns: 1fr; }
+  .reviews-screenshots { grid-template-columns: 1fr; }
   .photo-carousel__slide { flex: 0 0 calc(50% - 6px); }
   h1 { font-size: 2.2rem; }
   .hero { min-height: 100svh; }

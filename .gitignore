@@ -19,6 +19,10 @@ yarn-error.log*
 # Downloaded website backup
 wolfcarpenters.com/
 
+# Google API credentials — NEVER commit the real key/Place ID
+# Use js/config.example.js as the safe-to-commit template
+js/config.js
+
 # Temporary files
 *.tmp
 *.swp

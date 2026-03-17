@@ -1,5 +1,5 @@
 /* ============================================================
-   WOLF CARPENTERS — main.js
+   WOLF CARPENTERS | main.js
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,6 +33,40 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.remove('open');
         mobileMenu.classList.remove('open');
       });
+    });
+  }
+
+  /* ── Services dropdown: tap-toggle on mobile ───────────── */
+  const dropdownTrigger = document.querySelector('.nav__dropdown > a');
+  const dropdownParent  = document.querySelector('.nav__dropdown');
+  if (dropdownTrigger && dropdownParent) {
+    const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+    dropdownTrigger.setAttribute('aria-expanded', 'false');
+    dropdownTrigger.setAttribute('aria-haspopup', 'true');
+
+    dropdownTrigger.addEventListener('click', e => {
+      if (!isMobile()) return; // desktop: CSS :hover handles it
+      e.preventDefault();
+      const isOpen = dropdownParent.classList.toggle('nav__dropdown--open');
+      dropdownTrigger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // close if user taps outside
+    document.addEventListener('click', e => {
+      if (!dropdownParent.contains(e.target)) {
+        dropdownParent.classList.remove('nav__dropdown--open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // close on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        dropdownParent.classList.remove('nav__dropdown--open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+        dropdownTrigger.focus();
+      }
     });
   }
 
