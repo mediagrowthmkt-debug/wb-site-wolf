@@ -1189,6 +1189,12 @@ h4 { font-size: 1rem; }
 .services-full-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
 /* Full-width alternating service card (used on services.html) */
+.services-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
 .service-full-card {
   display: grid;
   grid-template-columns: 1fr;
@@ -1198,7 +1204,7 @@ h4 { font-size: 1rem; }
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 32px;
+  margin-bottom: 0;
   transition: border-color var(--transition);
 }
 .service-full-card:hover { border-color: rgba(225,186,72,.3); }
@@ -1642,10 +1648,8 @@ h4 { font-size: 1rem; }
   .contact-grid { grid-template-columns: 1fr; }
   .about-story__grid { grid-template-columns: 1fr; }
   .photo-carousel__slide { flex: 0 0 calc(33.33% - 8px); }
+  .services-cards-grid { grid-template-columns: repeat(2, 1fr); }
   .service-full-card { grid-template-columns: 1fr; }
-  .service-full-card--reverse { direction: ltr; }
-  .service-full-card__img img { min-height: 260px; }
-  .service-full-card__body { padding: 36px 32px; }
   .blog-grid { grid-template-columns: 1fr; }
   .ba-grid { grid-template-columns: 1fr; }
   .footer-map-section__inner { grid-template-columns: 1fr; }
@@ -1699,7 +1703,7 @@ h4 { font-size: 1rem; }
   .hero { min-height: 100svh; }
   .contact-form-wrapper, .contact-form { padding: 28px 20px; }
   .form-row { grid-template-columns: 1fr; }
-  .service-full-card__body { padding: 28px 20px; }
+  .services-cards-grid { grid-template-columns: 1fr; }
   .about-story__imgs { grid-template-columns: 1fr; }
   .about-story__imgs img:first-child { grid-column: auto; aspect-ratio: 16/9; }
 }
