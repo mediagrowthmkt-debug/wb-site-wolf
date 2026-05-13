@@ -12,7 +12,7 @@
 (function () {
   'use strict';
 
-  const ENDPOINT = '/submit-form.php';
+  const ENDPOINT = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
 
   /* ── Helpers ──────────────────────────────────────────── */
 
