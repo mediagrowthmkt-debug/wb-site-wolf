@@ -1,6 +1,6 @@
 /**
  * ghl-form.js — Wolf Carpenters
- * Submits all site forms to GHL via Netlify Function.
+ * Submits all site forms to GHL via submit-form.php (Hostinger).
  * Source is always set to "site" server-side.
  *
  * Handles:
@@ -12,7 +12,7 @@
 (function () {
   'use strict';
 
-  const ENDPOINT = '/.netlify/functions/submit-form';
+  const ENDPOINT = '/submit-form.php';
 
   /* ── Helpers ──────────────────────────────────────────── */
 
