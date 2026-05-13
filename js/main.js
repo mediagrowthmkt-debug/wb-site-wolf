@@ -205,19 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Form submit feedback ──────────────────────────────── */
-  const forms = document.querySelectorAll('form[data-feedback]');
-  forms.forEach(form => {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const msg = form.querySelector('.form-success');
-      if (msg) {
-        msg.style.display = 'block';
-        form.querySelectorAll('input,textarea,select').forEach(f => (f.value = ''));
-        setTimeout(() => (msg.style.display = 'none'), 5000);
-      }
-    });
-  });
+  /* ── Form submit → GHL (handled by js/ghl-form.js) ─────── */
+  // ghl-form.js, loaded after main.js, owns all form submissions.
 
   /* ── Video sound toggle ────────────────────────────────── */
   const videoSoundBtn = document.getElementById('videoSoundBtn');

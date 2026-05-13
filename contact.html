@@ -325,16 +325,6 @@
 </div>
 
 <script src="js/main.js"></script>
-<script>
-  // Contact form handler
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('contact-success').style.display = 'flex';
-    this.reset();
-    setTimeout(() => {
-      document.getElementById('contact-success').style.display = 'none';
-    }, 6000);
-  });
-</script>
+<script src="js/ghl-form.js"></script>
 </body>
 </html>

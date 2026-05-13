@@ -572,22 +572,9 @@ function moveCarousel(trackId, dir) {
   track.style.transform = 'translateX(-' + current + 'px)';
 }
 
-document.getElementById('serviceContactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  let valid = true;
-  const name = document.getElementById('hr_name');
-  const email = document.getElementById('hr_email');
-  const message = document.getElementById('hr_message');
-  document.getElementById('hr_name_error').textContent = '';
-  document.getElementById('hr_email_error').textContent = '';
-  document.getElementById('hr_message_error').textContent = '';
-  if (!name.value.trim()) { document.getElementById('hr_name_error').textContent = 'Please enter your name.'; valid = false; }
-  if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { document.getElementById('hr_email_error').textContent = 'Please enter a valid email address.'; valid = false; }
-  if (!message.value.trim()) { document.getElementById('hr_message_error').textContent = 'Please describe your project.'; valid = false; }
-  if (valid) { document.getElementById('hr_form_success').style.display = 'block'; this.reset(); }
-});
 </script>
 
 <script src="../js/main.js"></script>
+<script src="../js/ghl-form.js"></script>
 </body>
 </html>
