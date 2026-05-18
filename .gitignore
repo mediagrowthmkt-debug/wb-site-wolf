@@ -28,3 +28,4 @@ js/config.js
 *.swp
 *.swo
 *~
+.claude/

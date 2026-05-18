@@ -35,7 +35,7 @@
  *    The response contains "name": "places/ChIJ..." → copy the ChIJ part.
  *
  *  Option C – From the Google Maps URL:
- *    Open https://g.page/r/wolfcarpenters in a browser,
+ *    Open https://maps.app.goo.gl/LNopETPziYvBu3cY8 in a browser,
  *    then use the "Place ID Finder" above to confirm.
  *
  * ─────────────────────────────────────────────────────────────

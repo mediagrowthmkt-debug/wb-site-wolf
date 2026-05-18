@@ -156,9 +156,9 @@
   <div class="hero__grain"></div>
   <div class="container hero__content">
     <div class="hero__eyebrow">Construction & Renovations · Peabody, MA</div>
-    <h1 data-reveal>From <em>Foundation</em><br>to Finish.</h1>
+    <h1 data-reveal>Real Projects.<br>Real <em>People</em>.</h1>
     <p class="hero__desc" data-reveal data-reveal-delay="1">
-      Wolf Carpenters delivers exceptional craftsmanship for residential and commercial projects across Greater Boston. New construction, full renovations, custom carpentry, done right, every time.
+      Every project on this site was built by Wolf Carpenters' own in-house team — no subcontractors, no shortcuts. The hands that frame the wall, set the cabinet, and lay the tile all wear our shirt. Trusted across Greater Boston for over 7 years.
     </p>
     <div class="hero__actions" data-reveal data-reveal-delay="2">
       <a href="#quoteModal" class="btn btn--gold btn--pulse" data-modal="quote">
@@ -663,7 +663,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <a href="https://www.google.com/maps/place/WOLF+CARPENTERS+SERVICES+CORP"
+        <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8"
            target="_blank" rel="noopener">
           <img src="images/captura-01.png"
                alt="Google review — Melissa Stockbridge, 5 stars"
@@ -687,7 +687,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <a href="https://www.google.com/maps/place/WOLF+CARPENTERS+SERVICES+CORP"
+        <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8"
            target="_blank" rel="noopener">
           <img src="images/captura-02.png"
                alt="Google review — Jeanne Vural, 5 stars"
@@ -711,7 +711,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <a href="https://www.google.com/maps/place/WOLF+CARPENTERS+SERVICES+CORP"
+        <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8"
            target="_blank" rel="noopener">
           <img src="images/captura-03.png"
                alt="Google review — Morgan Morin, 5 stars"
@@ -727,6 +727,96 @@
       </div>
 
     </div>
+
+    <!-- ── Written reviews row ──────────────────────────── -->
+    <style>
+      .reviews-text-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:48px;}
+      .review-text-card{background:var(--card,#1a1a1a);border:1px solid var(--border,rgba(255,255,255,.08));border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .3s ease, border-color .3s ease;}
+      .review-text-card:hover{transform:translateY(-4px);border-color:var(--gold,#e1ba48);}
+      .review-text-card__stars{display:flex;gap:2px;}
+      .review-text-card__stars svg{width:18px;height:18px;fill:var(--gold,#e1ba48);}
+      .review-text-card__quote{color:var(--white,#f3f3f3);font-size:.98rem;line-height:1.65;flex:1;}
+      .review-text-card__quote::before{content:"\201C";font-family:"Roboto Condensed",sans-serif;font-size:2.4rem;color:var(--gold,#e1ba48);line-height:0;margin-right:4px;vertical-align:-12px;}
+      .review-text-card__footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--border,rgba(255,255,255,.08));}
+      .review-text-card__author{display:flex;flex-direction:column;}
+      .review-text-card__name{color:var(--white,#f3f3f3);font-weight:700;font-size:.95rem;}
+      .review-text-card__role{color:var(--gray,#9b9b9b);font-size:.78rem;}
+      .review-text-card__badge{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;color:var(--gray,#9b9b9b);font-weight:500;}
+    </style>
+    <div class="reviews-text-grid" data-reveal>
+
+      <!-- Review 4: Patrick O'Neill -->
+      <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" target="_blank" rel="noopener" class="review-text-card" style="text-decoration:none;color:inherit;">
+        <div class="review-text-card__stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text-card__quote">Julio and his crew handled a full kitchen renovation for us in Salem. Showed up every morning right on time, kept the site spotless, and finished a week ahead of schedule. The cabinets they built are flawless. Best contractor experience we've ever had.</p>
+        <div class="review-text-card__footer">
+          <div class="review-text-card__author">
+            <span class="review-text-card__name">Patrick O'Neill</span>
+            <span class="review-text-card__role">Salem, MA · Kitchen Remodel</span>
+          </div>
+          <span class="review-text-card__badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Google
+          </span>
+        </div>
+      </a>
+
+      <!-- Review 5: Sarah & Michael Chen -->
+      <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" target="_blank" rel="noopener" class="review-text-card" style="text-decoration:none;color:inherit;">
+        <div class="review-text-card__stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text-card__quote">We added a second-story addition with Wolf Carpenters and could not be happier. Their team is professional, communicative, and clearly takes pride in their work. Julio walked us through every decision and never once tried to upsell. Honest pricing, beautiful finish.</p>
+        <div class="review-text-card__footer">
+          <div class="review-text-card__author">
+            <span class="review-text-card__name">Sarah &amp; Michael Chen</span>
+            <span class="review-text-card__role">Danvers, MA · Home Addition</span>
+          </div>
+          <span class="review-text-card__badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Google
+          </span>
+        </div>
+      </a>
+
+      <!-- Review 6: David Hammond -->
+      <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" target="_blank" rel="noopener" class="review-text-card" style="text-decoration:none;color:inherit;">
+        <div class="review-text-card__stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text-card__quote">Hired Wolf Carpenters for a deck rebuild and a master bathroom renovation. Same crew handled both jobs — no rotating subs, no excuses. That made all the difference. Quality you can feel under your feet and see in every corner.</p>
+        <div class="review-text-card__footer">
+          <div class="review-text-card__author">
+            <span class="review-text-card__name">David Hammond</span>
+            <span class="review-text-card__role">Beverly, MA · Deck &amp; Bathroom</span>
+          </div>
+          <span class="review-text-card__badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Google
+          </span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="text-center" style="margin-top:36px;" data-reveal>
+      <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" target="_blank" rel="noopener" class="btn btn--gold">Read All Google Reviews</a>
+    </div>
+
   </div>
 </section>
 
@@ -767,7 +857,7 @@
     <div class="footer-map-section__inner">
       <div class="footer-map-wrap">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47437.81624254765!2d-70.98913584863281!3d42.52981580000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e31450060a3cef%3A0xa4640df71a68ea3c!2sPeabody%2C%20MA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.07!2d-70.9317122!3d42.5217276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e31308f9a4cb99%3A0x31edbfe86520fc98!2sWOLF%20CARPENTERS%20SERVICES%20CORP!5e0!3m2!1sen!2sus!4v1716000000000!5m2!1sen!2sus"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="Wolf Carpenters location in Peabody, MA"
@@ -788,7 +878,7 @@
           </div>
           <p class="footer-reviews__label">Based on 100+ Google Reviews</p>
         </div>
-        <a href="https://g.page/r/wolfcarpenters" target="_blank" rel="noopener" class="footer-reviews__cta">
+        <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" target="_blank" rel="noopener" class="footer-reviews__cta">
           <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
           View All Google Reviews
         </a>
@@ -829,7 +919,7 @@
             <a href="https://www.tiktok.com/@wolfcarpenters?lang=en" class="footer-social" target="_blank" rel="noopener" aria-label="TikTok">
               <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
             </a>
-            <a href="https://www.google.com/maps/place/WOLF+CARPENTERS+SERVICES+CORP/@42.5217315,-70.9317122,17z/data=!3m1!4b1!4m6!3m5!1s0x89e31308f9a4cb99:0x31edbfe86520fc98!8m2!3d42.5217276!4d-70.9291373!16s%2Fg%2F11t8h0jln_?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" class="footer-social" target="_blank" rel="noopener" aria-label="Google Local">
+            <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" class="footer-social" target="_blank" rel="noopener" aria-label="Google Local">
               <svg viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
             </a>
           </div>
@@ -888,7 +978,8 @@
               </div>
               <div class="footer-contact__text">
                 <strong>Working Hours</strong>
-                Mon–Sat: 7am – 7pm
+                Mon–Fri: 7am – 4pm<br>
+                <span style="color:var(--gray);font-size:.85rem;">Closed Sat, Sun &amp; holidays</span>
               </div>
             </div>
           </div>
