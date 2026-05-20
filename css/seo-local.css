@@ -1,0 +1,172 @@
+/* Wolf Carpenters — SEO local pages overlay
+   Inherits dark theme from styles.css; only adds layout for SEO matrix pages.
+*/
+
+.seo-hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 9rem 0 4rem;
+}
+
+.seo-hero h1 {
+  color: var(--white);
+  margin-top: .5rem;
+}
+
+.seo-hero p {
+  color: var(--gray);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  max-width: 60ch;
+}
+
+.seo-hero__grid,
+.seo-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.seo-content {
+  align-items: flex-start;
+}
+
+.seo-hero img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+}
+
+.seo-actions,
+.seo-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.seo-city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.seo-city-grid a,
+.seo-link-list a {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.seo-city-grid a:hover,
+.seo-link-list a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(225, 186, 72, 0.08);
+}
+
+.seo-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.seo-card-grid article,
+.seo-panel {
+  background: var(--card);
+  color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+}
+
+.seo-card-grid article h3,
+.seo-panel h3 {
+  color: var(--gold);
+  margin-bottom: .75rem;
+}
+
+.seo-card-grid article a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.seo-card-grid article a:hover {
+  text-decoration: underline;
+}
+
+.seo-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.seo-panel ul li {
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--gray);
+}
+
+.seo-panel ul li:last-child {
+  border-bottom: none;
+}
+
+.section--muted {
+  background: var(--black);
+}
+
+details {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  color: var(--white);
+}
+
+details p {
+  color: var(--gray);
+  margin-top: .5rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.seo-service-areas {
+  background: var(--dark);
+  color: var(--white);
+}
+
+.seo-service-areas h2 {
+  color: var(--white);
+}
+
+.section-subtitle {
+  color: var(--gray);
+  margin-top: .75rem;
+  max-width: 70ch;
+}
+
+@media (max-width: 768px) {
+  .seo-hero {
+    padding: 7rem 0 3rem;
+  }
+  .seo-hero__grid,
+  .seo-content {
+    grid-template-columns: 1fr;
+  }
+}

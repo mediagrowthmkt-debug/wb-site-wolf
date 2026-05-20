@@ -2,6 +2,16 @@
   publish   = "."
   functions = "netlify/functions"
 
+[build.processing.html]
+  pretty_urls = true
+
+# Strip trailing .html — keeps /about, /services/kitchen-remodeling, etc.
+[[redirects]]
+  from   = "/*.html"
+  to     = "/:splat"
+  status = 301
+  force  = true
+
 # Redirect form submission endpoint
 [[redirects]]
   from   = "/.netlify/functions/*"
