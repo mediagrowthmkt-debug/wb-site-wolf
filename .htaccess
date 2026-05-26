@@ -1,0 +1,12 @@
+Options -Indexes
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# Serve clean URLs from matching .html files on Hostinger/LiteSpeed.
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# Keep the homepage stable.
+RewriteRule ^$ index.html [L]

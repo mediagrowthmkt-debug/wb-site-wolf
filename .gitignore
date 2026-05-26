@@ -29,3 +29,8 @@ js/config.js
 *.swo
 *~
 .claude/
+
+# iCloud conflict copies
+* 2.html
+robots 2.txt
+sitemap 2.xml
