@@ -161,6 +161,22 @@ summary {
   max-width: 70ch;
 }
 
+.home-addition-local .btn--gold {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #07130b;
+}
+
+.home-addition-local .btn--gold:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+
+.home-addition-local .btn--pulse {
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, .55);
+}
+
 @media (max-width: 768px) {
   .seo-hero {
     padding: 7rem 0 3rem;

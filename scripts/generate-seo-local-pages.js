@@ -376,7 +376,7 @@ ${cityLinks}
 // PAGE SHELL — uses the REAL Wolf header/footer markup
 // ──────────────────────────────────────────────────────────────
 
-function pageShell({ title, description, canonical, schema, body }) {
+function pageShell({ title, description, canonical, schema, body, bodyClass = "" }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -412,7 +412,7 @@ ${ga4Tag()}
 
 ${schema.map(jsonLd).join("\n")}
 </head>
-<body>
+<body${bodyClass ? ` class="${bodyClass}"` : ""}>
 ${topBar()}
 ${header()}
 ${body}
@@ -735,7 +735,10 @@ function floatingCtas() {
 function servicePage(service, city) {
   const citySlug = slugify(city);
   const canonical = `${BASE_URL}/services/${service.slug}/${citySlug}-ma/`;
-  const title = `${service.name} in ${city}, MA | Wolf Carpenters`;
+  const isHomeAddition = service.slug === "home-addition";
+  const title = isHomeAddition
+    ? "Home Addition Contractors Near You. Built On Time or We Pay. | Wolf Carpenters"
+    : `${service.name} in ${city}, MA | Wolf Carpenters`;
   const description = `${service.name} in ${city}, MA by Wolf Carpenters. In-house crew, 7+ years on the North Shore. Request a free estimate today.`;
   const benefits = service.benefits.map((item) => `<li>${item}</li>`).join("");
   // Use path-absolute hrefs (no domain) so links work both on the local QA
@@ -768,13 +771,14 @@ function servicePage(service, city) {
         [`${city}, MA`, canonical],
       ]),
     ],
+    bodyClass: isHomeAddition ? "home-addition-local" : "",
     body: `
 <main>
   <section class="seo-hero">
     <div class="container seo-hero__grid">
       <div>
         <div class="section-tag">${city}, MA</div>
-        <h1>${service.name} in ${city}, MA</h1>
+        <h1>${isHomeAddition ? "Home Addition Contractors Near You. Built On Time or We Pay." : `${service.name} in ${city}, MA`}</h1>
         <p>${service.name} done by Wolf Carpenters' in-house crew. No subcontractors, no shortcuts, and local experience across Peabody, ${city}, and the North Shore.</p>
         <div class="seo-actions">
           <a href="/contact" class="btn btn--gold">Request a Free Estimate</a>
@@ -1212,6 +1216,22 @@ summary {
   color: var(--gray);
   margin-top: .75rem;
   max-width: 70ch;
+}
+
+.home-addition-local .btn--gold {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #07130b;
+}
+
+.home-addition-local .btn--gold:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+
+.home-addition-local .btn--pulse {
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, .55);
 }
 
 @media (max-width: 768px) {

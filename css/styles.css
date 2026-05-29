@@ -97,6 +97,18 @@ h4 { font-size: 1rem; }
   box-shadow: 0 8px 30px rgba(225,186,72,.35);
 }
 
+.btn--green {
+  background: #21c45a;
+  color: var(--black);
+  border-color: #21c45a;
+}
+.btn--green:hover {
+  background: #36e06f;
+  border-color: #36e06f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(33,196,90,.35);
+}
+
 .btn--outline {
   background: transparent;
   color: var(--white);
