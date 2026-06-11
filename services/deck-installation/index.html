@@ -36,7 +36,26 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-F1Z5VEGBBJ');
+    gtag('config', 'AW-16525015107');
   </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4126955510867529');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=4126955510867529&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
 <script type="application/ld+json">
 {
@@ -863,6 +882,43 @@
     <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.61.58 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.26.2 2.49.58 3.61a1 1 0 01-.25 1.01l-2.21 2.17z"/></svg>
   </a>
 </div>
+<script>
+  (function(){
+    function trackPhoneCallClick(){
+      var phoneNumber = '+19784193358';
+      var eventParams = {
+        event_category: 'engagement',
+        event_label: phoneNumber,
+        phone_number: phoneNumber,
+        page_path: window.location.pathname
+      };
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'phone_call_click', eventParams);
+        gtag('event', 'conversion', { send_to: 'AW-16525015107' });
+      }
+
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'PhoneCallClick', {
+          phone_number: phoneNumber,
+          page_path: window.location.pathname
+        });
+      }
+    }
+
+    function initPhoneTracking(){
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(link){
+        link.addEventListener('click', trackPhoneCallClick);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPhoneTracking);
+    } else {
+      initPhoneTracking();
+    }
+  })();
+</script>
 <script src="/js/main.js"></script>
 </body>
 </html>
