@@ -895,7 +895,15 @@
 
       if (typeof gtag === 'function') {
         gtag('event', 'phone_call_click', eventParams);
-        gtag('event', 'conversion', { send_to: 'AW-16525015107' });
+        gtag('event', 'conversion', {
+          send_to: 'AW-16525015107/_FGsCODO8OkbEMPw3sc9',
+          value: 1.0,
+          currency: 'USD',
+          event_category: 'lead',
+          event_label: 'phone_call_click',
+          phone_number: phoneNumber,
+          page_path: window.location.pathname
+        });
       }
 
       if (typeof fbq === 'function') {
