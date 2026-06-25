@@ -27,13 +27,26 @@
   <meta property="og:description" content="From foundation to finish. Expertise in construction and renovations." />
   <meta property="og:image" content="https://wolfcarpenters.com/images/wp-uploads/2024/05/logo-wolf-mobile.png" />
   <meta property="og:type" content="website" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1Z5VEGBBJ"></script>
+  <!-- Google tag (gtag.js) — deferred until interaction/idle to keep main thread free for LCP -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-F1Z5VEGBBJ');
+    (function(){
+      var loaded = false;
+      function loadGA(){
+        if (loaded) return; loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F1Z5VEGBBJ';
+        document.head.appendChild(s);
+      }
+      ['scroll','mousemove','touchstart','click','keydown'].forEach(function(ev){
+        window.addEventListener(ev, loadGA, { once:true, passive:true });
+      });
+      window.addEventListener('load', function(){ setTimeout(loadGA, 2500); });
+    })();
   </script>
   <!-- Local Business Schema -->
   <script type="application/ld+json">
@@ -286,7 +299,8 @@
   "@id": "https://wolfcarpenters.com/#business"
 }
   </script>
-  <link rel="stylesheet" href="css/seo-local.css" />
+  <link rel="preload" as="style" href="css/seo-local.css?v=2" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="css/seo-local.css?v=2" /></noscript>
 </head>
 <body>
 
@@ -327,7 +341,7 @@
 
       <!-- Logo -->
       <a href="/" class="nav__logo" aria-label="Wolf Carpenters Home">
-        <img src="images/wp-uploads/2024/05/logo-wolf-desktop.png"
+        <img src="images/wp-uploads/2024/05/logo-wolf-desktop.webp"
              alt="Wolf Carpenters Logo" width="160" height="161" fetchpriority="high" />
       </a>
 
@@ -537,7 +551,7 @@
         </p>
         <div class="about-home__sig">
           <img src="images/wp-uploads/2024/05/assinatura-julio-1.webp"
-               alt="Julio's signature" loading="lazy" />
+               alt="Julio's signature" loading="lazy" width="236" height="100" />
         </div>
         <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
           <a href="about" class="btn btn--gold">Our Story</a>
