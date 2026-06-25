@@ -10,13 +10,17 @@
   <!-- Favicon -->
   <link rel="icon" href="https://wolfcarpenters.com/images/wp-uploads/2024/05/cropped-logo-wolf-desktop-32x32.png" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts (async, non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" /></noscript>
+
+  <!-- LCP hero image preload (responsive) -->
+  <link rel="preload" as="image" href="images/hero/cabecalho-960.webp" imagesrcset="images/hero/cabecalho-960.webp 960w, images/hero/cabecalho-1920.webp 1920w" imagesizes="100vw" fetchpriority="high" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20260625" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Wolf Carpenters | Construction & Renovations in Peabody, MA" />
@@ -337,23 +341,23 @@
           </a>
           <div class="dropdown-menu" id="services-dropdown">
             <a href="services/general-contractors" class="dropdown-item">
-              <div class="icon"><img src="images/wp-uploads/2024/05/11-150x150.jpg" alt="" loading="lazy" width="150" height="150" /></div>
+              <div class="icon"><img src="images/wp-uploads/2024/05/11-150x150.webp" alt="" loading="lazy" width="150" height="150" /></div>
               <span>General Contractors</span>
             </a>
             <a href="services/commercial-services" class="dropdown-item">
-              <div class="icon"><img src="images/wp-uploads/2024/06/COMERCIAL-150x150.jpg" alt="" loading="lazy" width="150" height="150" /></div>
+              <div class="icon"><img src="images/wp-uploads/2024/06/COMERCIAL-150x150.webp" alt="" loading="lazy" width="150" height="150" /></div>
               <span>Commercial Services</span>
             </a>
             <a href="services/home-remodeling" class="dropdown-item">
-              <div class="icon"><img src="images/wp-uploads/2024/06/RESIDENCIAL-150x150.jpg" alt="" loading="lazy" width="150" height="150" /></div>
+              <div class="icon"><img src="images/wp-uploads/2024/06/RESIDENCIAL-150x150.webp" alt="" loading="lazy" width="150" height="150" /></div>
               <span>Home Remodeling</span>
             </a>
             <a href="services/kitchen-remodeling" class="dropdown-item">
-              <div class="icon"><img src="images/wp-uploads/2024/06/KITCHEN-150x150.jpg" alt="" loading="lazy" width="150" height="150" /></div>
+              <div class="icon"><img src="images/wp-uploads/2024/06/KITCHEN-150x150.webp" alt="" loading="lazy" width="150" height="150" /></div>
               <span>Kitchen Remodeling</span>
             </a>
             <a href="services/bathroom-remodeling" class="dropdown-item">
-              <div class="icon"><img src="images/wp-uploads/2024/06/BATHROOM-150x150.jpg" alt="" loading="lazy" width="150" height="150" /></div>
+              <div class="icon"><img src="images/wp-uploads/2024/06/BATHROOM-150x150.webp" alt="" loading="lazy" width="150" height="150" /></div>
               <span>Bathroom Remodeling</span>
             </a>
             <a href="services/addition" class="dropdown-item">
@@ -361,7 +365,7 @@
               <span>Home Addition</span>
             </a>
             <a href="services#deck-installation" class="dropdown-item">
-              <div class="icon"><img src="images/wp-uploads/2024/06/DECK-150x150.jpg" alt="" loading="lazy" width="150" height="150" /></div>
+              <div class="icon"><img src="images/wp-uploads/2024/06/DECK-150x150.webp" alt="" loading="lazy" width="150" height="150" /></div>
               <span>Deck Installation</span>
             </a>
             <div class="dropdown-all">
@@ -412,7 +416,13 @@
      HERO
 ════════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <div class="hero__bg"></div>
+  <div class="hero__bg">
+    <picture>
+      <source type="image/avif" srcset="images/hero/cabecalho-960.avif 960w, images/hero/cabecalho-1920.avif 1920w" sizes="100vw" />
+      <source type="image/webp" srcset="images/hero/cabecalho-960.webp 960w, images/hero/cabecalho-1920.webp 1920w" sizes="100vw" />
+      <img class="hero__bg-img" src="images/hero/cabecalho-1920.webp" alt="" width="1920" height="1111" fetchpriority="high" decoding="async" />
+    </picture>
+  </div>
   <div class="hero__grain"></div>
   <div class="container hero__content">
     <div class="hero__eyebrow">Construction & Renovations · Peabody, MA</div>
@@ -496,9 +506,9 @@
 
       <!-- Image Column -->
       <div class="about-home__img-wrap" data-reveal="left">
-        <video class="about-home__img" id="aboutVideo" autoplay muted loop playsinline>
-          <source src="videos/video-wolf-kitchen.mp4" type="video/mp4">
-        </video>
+        <video class="about-home__img" id="aboutVideo" muted loop playsinline preload="none"
+               poster="videos/poster-kitchen.webp" width="720" height="1280"
+               data-src="videos/video-wolf-kitchen.mp4"></video>
         <button class="video-sound-toggle" id="videoSoundBtn" aria-label="Toggle sound">
           <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -528,7 +538,7 @@
           Wolf Carpenters is a company prepared to perform small to large-scale residential and commercial services. We specialize in new construction and renovations, delivering spectacular work that delights and exceeds expectations.
         </p>
         <div class="about-home__sig">
-          <img src="images/wp-uploads/2024/05/assinatura-julio-1.png"
+          <img src="images/wp-uploads/2024/05/assinatura-julio-1.webp" width="300" height="127"
                alt="Julio's signature" loading="lazy" />
         </div>
         <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
@@ -584,8 +594,8 @@
     <div class="services-grid services-carousel-track" style="display:flex;transition:transform 0.6s cubic-bezier(.4,0,.2,1);">
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="videos/our-services/additions-1.webp" alt="Home Addition" loading="lazy" class="service-image" />
-        <video src="videos/our-services/addition-1.mp4" class="service-video" muted loop playsinline style="display:none;"></video>
+        <img src="videos/our-services/additions-1.webp" width="1535" height="1314" alt="Home Addition" loading="lazy" class="service-image" />
+        <video src="videos/our-services/addition-1.mp4" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Home Addition</div>
@@ -594,8 +604,8 @@
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="videos/our-services/kitchen-3.jpg" alt="Kitchen Renovation" loading="lazy" class="service-image" />
-        <video src="videos/our-services/kitchen-3.mp4" class="service-video" muted loop playsinline style="display:none;"></video>
+        <img src="videos/our-services/kitchen-3.webp" width="1000" height="1250" alt="Kitchen Renovation" loading="lazy" class="service-image" />
+        <video src="videos/our-services/kitchen-3.mp4" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Kitchen Renovation</div>
@@ -604,8 +614,8 @@
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="videos/our-services/bathroom-remodeling-2.jpg" alt="Bathroom Remodeling" loading="lazy" class="service-image" />
-        <video src="videos/our-services/bathroom-remodeling-2.mp4" class="service-video" muted loop playsinline style="display:none;"></video>
+        <img src="videos/our-services/bathroom-remodeling-2.webp" width="1000" height="1250" alt="Bathroom Remodeling" loading="lazy" class="service-image" />
+        <video src="videos/our-services/bathroom-remodeling-2.mp4" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Bathroom Remodeling</div>
@@ -614,8 +624,8 @@
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="videos/our-services/deck-4.jpg" alt="Deck Renovation" loading="lazy" class="service-image" />
-        <video src="videos/our-services/deck-4.mp4" class="service-video" muted loop playsinline style="display:none;"></video>
+        <img src="videos/our-services/deck-4.webp" width="1000" height="750" alt="Deck Renovation" loading="lazy" class="service-image" />
+        <video src="videos/our-services/deck-4.mp4" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Deck Renovation</div>
@@ -624,7 +634,7 @@
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="images/wp-uploads/2024/06/BUILT-IN-2.jpg" alt="Built-in Cabinets" loading="lazy" class="service-image" />
+        <img src="images/wp-uploads/2024/06/BUILT-IN-2.webp" width="1000" height="1250" alt="Built-in Cabinets" loading="lazy" class="service-image" />
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Built-in Cabinets</div>
@@ -633,7 +643,7 @@
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="images/wp-uploads/2024/06/BATHROOM.jpg" alt="Bathroom" loading="lazy" class="service-image" />
+        <img src="images/wp-uploads/2024/06/BATHROOM.webp" width="1000" height="1250" alt="Bathroom" loading="lazy" class="service-image" />
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Bathroom Renovation</div>
@@ -642,7 +652,7 @@
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="images/wp-uploads/2024/06/KITCHEN.jpg" alt="Kitchen Remodeling" loading="lazy" class="service-image" />
+        <img src="images/wp-uploads/2024/06/KITCHEN.webp" width="1000" height="1250" alt="Kitchen Remodeling" loading="lazy" class="service-image" />
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Kitchen Remodeling</div>
@@ -651,7 +661,7 @@
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="images/wp-uploads/2024/06/DECK.jpg" alt="Deck Installation" loading="lazy" class="service-image" />
+        <img src="images/wp-uploads/2024/06/DECK.webp" width="1000" height="1250" alt="Deck Installation" loading="lazy" class="service-image" />
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Deck Installation</div>
@@ -690,49 +700,49 @@
     <div class="photo-carousel" data-reveal>
       <div class="photo-carousel__track">
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834287607420961_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834287607420961_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834288832207178_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834288832207178_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1749678420_3652889801258298859_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1749678420_3652889801258298859_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1750626052_3660839118225815845_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1750626052_3660839118225815845_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1751922037_3671710624237684943_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1751922037_3671710624237684943_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754254988_3691280836188689202_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754254988_3691280836188689202_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754513167_3693446596960628574_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754513167_3693446596960628574_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080924979921081_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080924979921081_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080925567155419_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080925567155419_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1756934487_3713758097849695982_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1756934487_3713758097849695982_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1757706246_3720232082737324994_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1757706246_3720232082737324994_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1762985382_3764516692115323365_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1762985382_3764516692115323365_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261228790665_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261228790665_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261522391695_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261522391695_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261597887631_49024863707.jpg" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261597887631_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
       </div>
     </div>
@@ -766,12 +776,12 @@
         <div class="ba-images">
           <div class="ba-side ba-before">
             <span class="ba-label">Before</span>
-            <img src="images/wp-uploads/2024/06/RESIDENCIAL.jpg"
+            <img src="images/wp-uploads/2024/06/RESIDENCIAL.webp" width="1000" height="1250"
                  alt="Kitchen before remodeling by Wolf Carpenters" loading="lazy" />
           </div>
           <div class="ba-side ba-after">
             <span class="ba-label">After</span>
-            <img src="images/wp-uploads/2024/06/KITCHEN.jpg"
+            <img src="images/wp-uploads/2024/06/KITCHEN.webp" width="1000" height="1250"
                  alt="Dream kitchen after remodeling by Wolf Carpenters" loading="lazy" />
           </div>
         </div>
@@ -786,12 +796,12 @@
         <div class="ba-images">
           <div class="ba-side ba-before">
             <span class="ba-label">Before</span>
-            <img src="images/BanheiroAntes.png"
+            <img src="images/BanheiroAntes.webp" width="1200" height="1524"
                  alt="Bathroom before remodeling by Wolf Carpenters" loading="lazy" />
           </div>
           <div class="ba-side ba-after">
             <span class="ba-label">After</span>
-            <img src="images/BanheiroDepois.png"
+            <img src="images/BanheiroDepois.webp" width="1200" height="1535"
                  alt="Modern bathroom after remodeling by Wolf Carpenters" loading="lazy" />
           </div>
         </div>
@@ -806,12 +816,12 @@
         <div class="ba-images">
           <div class="ba-side ba-before">
             <span class="ba-label">Before</span>
-            <img src="images/DeckAntes.png"
+            <img src="images/DeckAntes.webp" width="1200" height="1603"
                  alt="Backyard before deck installation by Wolf Carpenters" loading="lazy" />
           </div>
           <div class="ba-side ba-after">
             <span class="ba-label">After</span>
-            <img src="images/DeckDepois.png"
+            <img src="images/DeckDepois.webp" width="1200" height="1604"
                  alt="New deck installation by Wolf Carpenters" loading="lazy" />
           </div>
         </div>
@@ -925,7 +935,7 @@
         </div>
         <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8"
            target="_blank" rel="noopener">
-          <img src="images/captura-01.png"
+          <img src="images/captura-01.webp" width="1000" height="885"
                alt="Google review — Melissa Stockbridge, 5 stars"
                loading="lazy" />
         </a>
@@ -949,7 +959,7 @@
         </div>
         <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8"
            target="_blank" rel="noopener">
-          <img src="images/captura-02.png"
+          <img src="images/captura-02.webp" width="1000" height="737"
                alt="Google review — Jeanne Vural, 5 stars"
                loading="lazy" />
         </a>
@@ -973,7 +983,7 @@
         </div>
         <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8"
            target="_blank" rel="noopener">
-          <img src="images/captura-03.png"
+          <img src="images/captura-03.webp" width="1000" height="745"
                alt="Google review — Morgan Morin, 5 stars"
                loading="lazy" />
         </a>
@@ -1157,7 +1167,7 @@
         <!-- Brand -->
         <div>
           <img class="footer-brand__logo"
-               src="images/wp-uploads/2024/05/logo-wolf-desktop.png"
+               src="images/wp-uploads/2024/05/logo-wolf-desktop.png" width="200" height="202"
                alt="Wolf Carpenters" />
           <p>Wolf Carpenters is a family-owned construction and renovation company serving greater Boston for over 7 years. From foundation to finish. We build with pride.</p>
           <div class="footer-socials">
@@ -1342,8 +1352,8 @@
   </div>
 </div>
 
-<script src="js/config.js"></script>
-<script src="js/main.js"></script>
-<script src="js/ghl-form.js"></script>
+<script src="js/config.js?v=20260625"></script>
+<script src="js/main.js?v=20260625"></script>
+<script src="js/ghl-form.js?v=20260625"></script>
 </body>
 </html>

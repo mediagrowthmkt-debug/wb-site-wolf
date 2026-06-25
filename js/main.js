@@ -223,6 +223,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── Lazy-load home about video (performance) ──────────── */
+  if (aboutVideo && aboutVideo.dataset.src) {
+    const loadAboutVideo = () => {
+      if (!aboutVideo.dataset.src) return;
+      aboutVideo.src = aboutVideo.dataset.src;
+      aboutVideo.removeAttribute('data-src');
+      aboutVideo.play().catch(() => {});
+    };
+    if ('IntersectionObserver' in window) {
+      const vio = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting) { loadAboutVideo(); obs.disconnect(); } });
+      }, { rootMargin: '200px' });
+      vio.observe(aboutVideo);
+    } else {
+      loadAboutVideo();
+    }
+  }
+
   /* ── Service cards video hover ─────────────────────────── */
   const serviceCards = document.querySelectorAll('.service-card');
   serviceCards.forEach(card => {
