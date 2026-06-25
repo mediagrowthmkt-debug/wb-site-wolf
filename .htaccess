@@ -10,3 +10,47 @@ RewriteRule ^(.+?)/?$ $1.html [L]
 
 # Keep the homepage stable.
 RewriteRule ^$ index.html [L]
+
+# ── MIME types for modern formats ──────────────────────────
+<IfModule mod_mime.c>
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType video/mp4  .mp4
+  AddType font/woff2 .woff2
+</IfModule>
+
+# ── GZip / Brotli compression ──────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml application/xml
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml application/xml
+</IfModule>
+
+# ── Cache policy ───────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Immutable static assets (1 year)
+  <FilesMatch "\.(avif|webp|jpe?g|png|gif|svg|ico|mp4|webm|woff2?|ttf|eot|css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # HTML always revalidated
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  # Security headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType video/mp4  "access plus 1 year"
+  ExpiresByType text/css   "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/html  "access plus 0 seconds"
+</IfModule>

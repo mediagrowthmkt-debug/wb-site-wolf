@@ -1696,11 +1696,11 @@ h4 { font-size: 1rem; }
   .hamburger { display: flex; }
   .topbar { display: none; }
   .hero { min-height: 120vh; }
-  .hero__bg {
-    background: 
-      linear-gradient(105deg, rgba(10,10,10,.60) 45%, rgba(10,10,10,.20) 100%),
-      url('../images/Cabecalho-02B-mobile-new-scaled.jpg') center top -10px/cover no-repeat;
+  .hero__bg__legacy { display: none; }
+  .hero__bg::before {
+    background: linear-gradient(105deg, rgba(10,10,10,.60) 45%, rgba(10,10,10,.20) 100%);
   }
+  .hero__bg-img { object-position: center top; }
   .hero .container {
     padding-top: 180px;
   }
@@ -1733,4 +1733,10 @@ h4 { font-size: 1rem; }
   .services-cards-grid { grid-template-columns: 1fr; }
   .about-story__imgs { grid-template-columns: 1fr; }
   .about-story__imgs img:first-child { grid-column: auto; aspect-ratio: 16/9; }
+}
+
+/* a11y: inline text links distinguishable beyond color */
+p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
