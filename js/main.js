@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('IntersectionObserver' in window) {
       const vio = new IntersectionObserver((entries, obs) => {
         entries.forEach(e => { if (e.isIntersecting) { loadAboutVideo(); obs.disconnect(); } });
-      }, { rootMargin: '400px' });
+      }, { rootMargin: '0px 0px 100px 0px', threshold: 0.01 });
       vio.observe(aboutVideo);
     } else {
       loadAboutVideo();
