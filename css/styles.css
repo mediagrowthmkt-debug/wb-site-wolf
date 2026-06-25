@@ -1138,7 +1138,7 @@ h4 { font-size: 1rem; }
 .footer-social:hover { background: var(--gold); border-color: var(--gold); }
 .footer-social:hover svg { fill: var(--black); }
 
-.footer-col h4 {
+.footer-col h3, .footer-col h4 {
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -1740,3 +1740,6 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+/* visually-hidden text for screen readers / descriptive link text */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
