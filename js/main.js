@@ -224,8 +224,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── Lazy-load home about video (performance) ──────────── */
-  if (aboutVideo && aboutVideo.dataset.src) {
+  if (aboutVideo && (aboutVideo.dataset.src || aboutVideo.dataset.poster)) {
     const loadAboutVideo = () => {
+      if (aboutVideo.dataset.poster) {
+        aboutVideo.poster = aboutVideo.dataset.poster;
+        aboutVideo.removeAttribute('data-poster');
+      }
       if (!aboutVideo.dataset.src) return;
       aboutVideo.src = aboutVideo.dataset.src;
       aboutVideo.removeAttribute('data-src');
@@ -234,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('IntersectionObserver' in window) {
       const vio = new IntersectionObserver((entries, obs) => {
         entries.forEach(e => { if (e.isIntersecting) { loadAboutVideo(); obs.disconnect(); } });
-      }, { rootMargin: '200px' });
+      }, { rootMargin: '400px' });
       vio.observe(aboutVideo);
     } else {
       loadAboutVideo();

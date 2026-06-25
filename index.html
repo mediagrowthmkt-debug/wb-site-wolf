@@ -20,7 +20,7 @@
   <link rel="preload" as="image" href="images/hero/cabecalho-960.webp" imagesrcset="images/hero/cabecalho-960.webp 960w, images/hero/cabecalho-1920.webp 1920w" imagesizes="100vw" fetchpriority="high" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=20260625c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260625d" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Wolf Carpenters | Construction & Renovations in Peabody, MA" />
@@ -417,11 +417,9 @@
 ════════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
   <div class="hero__bg">
-    <picture>
-      <source type="image/avif" srcset="images/hero/cabecalho-960.avif 960w, images/hero/cabecalho-1920.avif 1920w" sizes="100vw" />
-      <source type="image/webp" srcset="images/hero/cabecalho-960.webp 960w, images/hero/cabecalho-1920.webp 1920w" sizes="100vw" />
-      <img class="hero__bg-img" src="images/hero/cabecalho-1920.webp" alt="" width="1920" height="1111" fetchpriority="high" decoding="async" />
-    </picture>
+    <img class="hero__bg-img" src="images/hero/cabecalho-960.webp"
+         srcset="images/hero/cabecalho-960.webp 960w, images/hero/cabecalho-1920.webp 1920w" sizes="100vw"
+         alt="" width="1920" height="1111" fetchpriority="high" decoding="async" />
   </div>
   <div class="hero__grain"></div>
   <div class="container hero__content">
@@ -507,8 +505,8 @@
       <!-- Image Column -->
       <div class="about-home__img-wrap" data-reveal="left">
         <video class="about-home__img" id="aboutVideo" muted loop playsinline preload="none"
-               poster="videos/poster-kitchen.webp" width="720" height="1280"
-               data-src="videos/video-wolf-kitchen.mp4"></video>
+               width="720" height="1280"
+               data-poster="videos/poster-kitchen.webp" data-src="videos/video-wolf-kitchen.mp4"></video>
         <button class="video-sound-toggle" id="videoSoundBtn" aria-label="Toggle sound">
           <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -1355,7 +1353,7 @@
 <script>/* site config (no secrets) — Google reviews fall back to static when empty;
    if Places API is ever enabled, restrict the key by HTTP referrer */
 window.WOLF_CONFIG = window.WOLF_CONFIG || { GOOGLE_PLACES_API_KEY:'', GOOGLE_PLACE_ID:'', REVIEWS_CACHE_TTL: 21600000 };</script>
-<script src="js/main.js?v=20260625"></script>
+<script src="js/main.js?v=20260625d"></script>
 <script src="js/ghl-form.js?v=20260625"></script>
 </body>
 </html>
