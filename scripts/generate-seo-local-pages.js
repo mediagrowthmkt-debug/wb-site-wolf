@@ -18,6 +18,9 @@ const ADDRESS = {
 };
 
 const cities = [
+  "Acton",
+  "Ayer",
+  "Bedford",
   "Peabody",
   "Salem",
   "Danvers",
@@ -48,10 +51,20 @@ const cities = [
   "Groveland",
   "Woburn",
   "Burlington",
+  "Carlisle",
+  "Chelmsford",
+  "Concord",
+  "Dracut",
+  "Dunstable",
+  "Groton",
+  "Hudson",
   "Wilmington",
   "Tewksbury",
   "Winchester",
   "Lexington",
+  "Lincoln",
+  "Littleton",
+  "Maynard",
   "Arlington",
   "Cambridge",
   "Somerville",
@@ -67,6 +80,24 @@ const cities = [
   "Revere",
   "Nahant",
 ];
+
+const cityZips = {
+  Acton: ["01718", "01720"],
+  Ayer: ["01432"],
+  Bedford: ["01730"],
+  Burlington: ["01803", "01805"],
+  Carlisle: ["01741"],
+  Chelmsford: ["01824", "01863", "01884"],
+  Concord: ["01742"],
+  Dracut: ["01826"],
+  Dunstable: ["01827"],
+  Groton: ["01450", "01471"],
+  Hudson: ["01749"],
+  Lexington: ["02420", "02421"],
+  Lincoln: ["01773"],
+  Littleton: ["01460"],
+  Maynard: ["01754"],
+};
 
 const services = [
   {
@@ -736,11 +767,29 @@ function servicePage(service, city) {
   const citySlug = slugify(city);
   const canonical = `${BASE_URL}/services/${service.slug}/${citySlug}-ma/`;
   const isHomeAddition = service.slug === "home-addition";
-  const title = isHomeAddition
+  const isKitchen = service.slug === "kitchen-remodeling";
+  const kitchenCopy = isKitchen ? kitchenLocalCopy(city) : null;
+  const title = kitchenCopy ? kitchenCopy.title : isHomeAddition
     ? "Home Addition Contractors Near You. Built On Time or We Pay. | Wolf Carpenters"
     : `${service.name} in ${city}, MA | Wolf Carpenters`;
-  const description = `${service.name} in ${city}, MA by Wolf Carpenters. In-house crew, 7+ years on the North Shore. Request a free estimate today.`;
-  const benefits = service.benefits.map((item) => `<li>${item}</li>`).join("");
+  const description = kitchenCopy ? kitchenCopy.description : `${service.name} in ${city}, MA by Wolf Carpenters. In-house crew, 7+ years on the North Shore. Request a free estimate today.`;
+  const benefits = (kitchenCopy ? kitchenCopy.included : service.benefits).map((item) => `<li>${item}</li>`).join("");
+  const h1 = kitchenCopy ? kitchenCopy.h1 : isHomeAddition ? "Home Addition Contractors Near You. Built On Time or We Pay." : `${service.name} in ${city}, MA`;
+  const heroText = kitchenCopy ? kitchenCopy.hero : `${service.name} done by Wolf Carpenters' in-house crew. No subcontractors, no shortcuts, and local experience across Peabody, ${city}, and the North Shore.`;
+  const localIntro = kitchenCopy ? kitchenCopy.intro : `Homes in ${city}, MA need contractors who understand New England framing, weather, permits, older properties, and finish details. Wolf Carpenters manages ${service.name.toLowerCase()} projects from planning to final walkthrough with the same crew responsible for the work.`;
+  const localSecond = kitchenCopy ? kitchenCopy.second : `Our Peabody-based team serves ${city} and nearby North Shore communities with clear communication, clean job sites, and craftsmanship built to last.`;
+  const whyCards = kitchenCopy
+    ? kitchenCopy.cards.map(([heading, text]) => `<article><h3>${heading}</h3><p>${text}</p></article>`).join("")
+    : [
+        `<article><h3>In-house crew</h3><p>The team that plans the work is the team that builds it. That keeps accountability clear from day one.</p></article>`,
+        `<article><h3>Local North Shore experience</h3><p>Wolf is based in Peabody and serves ${city}, Salem, Danvers, Beverly, Lynn, and surrounding cities.</p></article>`,
+        `<article><h3>Full-scope execution</h3><p>From framing and carpentry to finishes, Wolf handles the details that make remodels feel complete.</p></article>`,
+      ].join("");
+  const faqMarkup = kitchenCopy
+    ? kitchenCopy.faq.map((item, index) => `<details${index === 0 ? " open" : ""}><summary>${item.q}</summary><p>${item.a}</p></details>`).join("\n        ")
+    : `<details open><summary>Do you serve ${city}, MA?</summary><p>Yes. Wolf Carpenters serves ${city}, Peabody, and surrounding North Shore communities.</p></details>
+        <details><summary>Do you use subcontractors?</summary><p>Wolf Carpenters emphasizes an in-house crew model, keeping the work accountable and consistent.</p></details>
+        <details><summary>How do I start a ${service.name.toLowerCase()} project?</summary><p>Call ${PHONE_DISPLAY} or request an estimate through the contact page. The team will review the scope, timeline, and next steps.</p></details>`;
   // Use path-absolute hrefs (no domain) so links work both on the local QA
   // server and the live site without forcing the user out to the real domain.
   const related = services
@@ -778,8 +827,8 @@ function servicePage(service, city) {
     <div class="container seo-hero__grid">
       <div>
         <div class="section-tag">${city}, MA</div>
-        <h1>${isHomeAddition ? "Home Addition Contractors Near You. Built On Time or We Pay." : `${service.name} in ${city}, MA`}</h1>
-        <p>${service.name} done by Wolf Carpenters' in-house crew. No subcontractors, no shortcuts, and local experience across Peabody, ${city}, and the North Shore.</p>
+        <h1>${h1}</h1>
+        <p>${heroText}</p>
         <div class="seo-actions">
           <a href="/contact" class="btn btn--gold">Request a Free Estimate</a>
           <a href="tel:${PHONE_TEL}" class="btn btn--outline">${PHONE_DISPLAY}</a>
@@ -794,8 +843,8 @@ function servicePage(service, city) {
       <div>
         <div class="section-tag">Local service</div>
         <h2>Built for ${city} homes</h2>
-        <p>Homes in ${city}, MA need contractors who understand New England framing, weather, permits, older properties, and finish details. Wolf Carpenters manages ${service.name.toLowerCase()} projects from planning to final walkthrough with the same crew responsible for the work.</p>
-        <p>Our Peabody-based team serves ${city} and nearby North Shore communities with clear communication, clean job sites, and craftsmanship built to last.</p>
+        <p>${localIntro}</p>
+        <p>${localSecond}</p>
       </div>
       <aside class="seo-panel">
         <h3>What's included</h3>
@@ -809,9 +858,7 @@ function servicePage(service, city) {
       <div class="section-tag">Why Wolf</div>
       <h2>Why homeowners in ${city} choose Wolf Carpenters</h2>
       <div class="seo-card-grid">
-        <article><h3>In-house crew</h3><p>The team that plans the work is the team that builds it. That keeps accountability clear from day one.</p></article>
-        <article><h3>Local North Shore experience</h3><p>Wolf is based in Peabody and serves ${city}, Salem, Danvers, Beverly, Lynn, and surrounding cities.</p></article>
-        <article><h3>Full-scope execution</h3><p>From framing and carpentry to finishes, Wolf handles the details that make remodels feel complete.</p></article>
+        ${whyCards}
       </div>
     </div>
   </section>
@@ -821,9 +868,7 @@ function servicePage(service, city) {
       <div>
         <div class="section-tag">FAQ</div>
         <h2>${service.name} questions in ${city}</h2>
-        <details open><summary>Do you serve ${city}, MA?</summary><p>Yes. Wolf Carpenters serves ${city}, Peabody, and surrounding North Shore communities.</p></details>
-        <details><summary>Do you use subcontractors?</summary><p>Wolf Carpenters emphasizes an in-house crew model, keeping the work accountable and consistent.</p></details>
-        <details><summary>How do I start a ${service.name.toLowerCase()} project?</summary><p>Call ${PHONE_DISPLAY} or request an estimate through the contact page. The team will review the scope, timeline, and next steps.</p></details>
+        ${faqMarkup}
       </div>
       <aside class="seo-panel">
         <h3>Related in ${city}</h3>
@@ -968,7 +1013,90 @@ function deckPillarPage() {
   });
 }
 
+function pick(items, city, salt = 0) {
+  const seed = city.split("").reduce((sum, char) => sum + char.charCodeAt(0), salt);
+  return items[seed % items.length];
+}
+
+function zipPhrase(city) {
+  const zips = cityZips[city];
+  if (!zips || zips.length === 0) return "";
+  if (zips.length === 1) return ` including ZIP code ${zips[0]}`;
+  return ` including ZIP codes ${zips.slice(0, -1).join(", ")} and ${zips[zips.length - 1]}`;
+}
+
+function kitchenLocalCopy(city) {
+  const zipText = zipPhrase(city);
+  const introAngles = [
+    `A Kitchen Remodel in ${city}, MA has to solve the way the room works every day, not just change the finishes. Wolf Carpenters helps homeowners plan cabinets, work zones, storage, trim details, and finish carpentry so the new kitchen feels intentional from the first walkthrough.`,
+    `When homeowners search for a Kitchen Remodel Near Me in ${city}, they are usually trying to find a crew that can make the layout clearer, the storage easier, and the finish work more precise. Wolf Carpenters brings that practical planning into each kitchen project${zipText}.`,
+    `A strong kitchen renovation starts with the pieces homeowners use most: Kitchen Cabinets, counters, lighting locations, appliance clearances, and the flow around the sink, range, and refrigerator. Wolf Carpenters plans those details for ${city} homes before construction begins.`,
+    `For homeowners comparing a Kitchen Remodel Contractor in ${city}, the difference is often coordination. Wolf Carpenters keeps cabinet installation, carpentry, trim, island planning, and finishing details connected under one local team.`,
+  ];
+  const secondAngles = [
+    `Some ${city} kitchens need a better cabinet plan; others need a Kitchen Island that adds prep space without blocking traffic. The estimate starts with the actual room, the family routine, and the finishes that make sense for the home.`,
+    `Wolf Carpenters can help with Cabinets, layout changes, finish carpentry, backsplash coordination, and the small transitions that make a remodel look complete instead of patched together.`,
+    `If you are looking for a Contractor for Kitchen Remodel work in ${city}, the first step is a clear scope: what stays, what moves, which cabinets need replacing, and how the kitchen should function after the remodel.`,
+    `The goal is a cleaner kitchen plan with better storage, stronger surfaces, and finish details that hold up to daily use in a New England home.`,
+  ];
+  const cards = [
+    [
+      ["Cabinet planning", `Kitchen Cabinets are reviewed around storage, appliance spacing, and how each wall can work harder for the ${city} home.`],
+      ["Island layout", `A Kitchen Island can add prep space, seating, and storage when the clearances support it.`],
+      ["Finish carpentry", "Trim, panels, casing, and transitions are planned so the remodel feels complete."],
+    ],
+    [
+      ["Layout review", `Wolf Carpenters looks at the current kitchen flow before recommending a cabinet or island plan for ${city}.`],
+      ["Cabinets and counters", "Cabinets, surfaces, backsplash lines, and trim details are coordinated together."],
+      ["Local execution", "A Peabody-based crew keeps communication direct from estimate to final walkthrough."],
+    ],
+    [
+      ["Search-intent fit", `Homeowners searching Kitchen Remodel Near Me in ${city} usually need a contractor who can explain scope, timeline, and trade coordination clearly.`],
+      ["Storage upgrades", "Cabinets are planned around daily use, not just door style and color."],
+      ["Practical buildout", "The crew focuses on durable installation, clean details, and a finished kitchen that works."],
+    ],
+  ];
+  const faq = [
+    {
+      q: `Can you help with Kitchen Cabinets in ${city}?`,
+      a: `Yes. Wolf Carpenters can plan cabinet replacement, cabinet installation coordination, panels, trim, and related finish details for kitchen remodels in ${city}, MA${zipText}.`,
+    },
+    {
+      q: `Do you build or plan Kitchen Island layouts?`,
+      a: `Yes. The team reviews walkway clearance, seating, storage, outlets, and how the island connects to the rest of the kitchen before recommending the best layout.`,
+    },
+    {
+      q: `Are you a Kitchen Remodel Contractor near ${city}?`,
+      a: `Yes. Wolf Carpenters is based in Peabody and serves ${city} with kitchen remodel planning, carpentry, cabinets, islands, and finish work.`,
+    },
+  ];
+
+  return {
+    title: `Kitchen Remodel in ${city}, MA | Wolf Carpenters`,
+    description: `Kitchen Remodel in ${city}, MA by Wolf Carpenters. Kitchen cabinets, cabinets, kitchen island planning, and local contractor for kitchen remodel projects.`,
+    h1: `Kitchen Remodel in ${city}, MA`,
+    hero: `Kitchen Remodel work for ${city} homeowners who want better cabinets, smarter layout, durable finishes, and a local crew that understands North Shore and Middlesex County homes${zipText}.`,
+    intro: pick(introAngles, city, 1),
+    second: pick(secondAngles, city, 2),
+    cards: pick(cards, city, 3),
+    faq,
+    included: ["Kitchen Cabinets", "Cabinets", "Kitchen Island planning", "Layout and finish carpentry"],
+  };
+}
+
 function faqSchema(service, city) {
+  if (service.slug === "kitchen-remodeling") {
+    const copy = kitchenLocalCopy(city);
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: copy.faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    };
+  }
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
