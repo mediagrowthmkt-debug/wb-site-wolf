@@ -42,7 +42,7 @@
       email:   getVal(form, 'email'),
       phone:   getVal(form, 'phone'),
       service: getVal(form, 'service'),
-      message: msg + '\n\nPage: ' + (location.pathname || '/'),
+      message: msg + '\n\nPage: ' + (location.href || '/'),
       address: getVal(form, 'address'),
       source:  'website',
       // valida como humano (fallback) para passar o gate de reCAPTCHA do n8n
