@@ -731,7 +731,7 @@
         var ok=true;
         if(!v('name')){err('ls_name_error','Please enter your name.');ok=false;}
         if(!v('phone')){err('ls_phone_error','Please enter your phone.');ok=false;}
-        if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v('email'))){err('ls_email_error','Please enter a valid email.');ok=false;}
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))){err('ls_email_error','Please enter a valid email.');ok=false;}
         return ok;
       }
       return true;
@@ -754,7 +754,7 @@
       var token=(window.grecaptcha&&grecaptcha.getResponse())||'';
       if(!token){err('ls_captcha_error','Please confirm you are not a robot.');return;}
       var btn=form.querySelector('button[type="submit"]');var o=btn.innerHTML;btn.disabled=true;btn.innerHTML='Sending&hellip;';
-      var tf=v('timeframe'); var full=(tf?('['+tf+'] '):'')+v('message')+'\\n\\nPage: '+location.pathname;
+      var tf=v('timeframe'); var full=(tf?('['+tf+'] '):'')+v('message')+'\n\nPage: '+location.pathname;
       try{
         var r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
           name:v('name'),email:v('email'),phone:v('phone'),message:full,
