@@ -561,7 +561,7 @@
         <h1>Kitchen Remodeling North Andover, MA</h1>
         <p>Wolf Carpenters is the kitchen remodeling North Andover, MA team that builds custom kitchens with our own in-house crew, no subcontractors, from cabinets and countertops to full layout changes. Below you can see real North Andover kitchens we built, how our process works step by step, what a kitchen remodel typically costs on the North Shore, which permits the town requires, and answers to the questions homeowners ask us most.</p>
         <div class="seo-actions">
-          <a href="/contact" class="btn btn--gold">Request a Free Estimate</a>
+          <a href="#quote" class="btn btn--gold">Request a Free Estimate</a>
           <a href="tel:+19784193358" class="btn btn--outline">+1 978-419-3358</a>
         </div>
       </div>
@@ -861,7 +861,7 @@
       <p>Wolf Carpenters holds a <strong>5.0 rating across 100+ Google reviews</strong> from North Shore homeowners. Families across North Andover, Andover and the surrounding towns have trusted our in-house crew with their kitchens and whole-home remodels. You can read every review, in the homeowners' own words, on our Google profile.</p>
       <div class="seo-actions">
         <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" class="btn btn--gold" target="_blank" rel="noopener">Read our Google reviews</a>
-        <a href="/contact" class="btn btn--outline">Request a Free Estimate</a>
+        <a href="#quote" class="btn btn--outline">Request a Free Estimate</a>
       </div>
     </div>
   </section>
@@ -885,6 +885,77 @@
       </aside>
     </div>
   </section>
+
+  <!-- ══ MG LEAD FORM (source: blog/artigo) ══ -->
+  <section class="section section--muted" id="quote">
+    <div class="container" style="max-width:640px">
+      <div class="section-tag">Free Estimate</div>
+      <h2>Get your free Kitchen Remodeling estimate in North Andover, MA</h2>
+      <p style="margin-bottom:22px">Fill out the form and our in-house team gets back to you within 24 hours. No subcontractors, no pressure.</p>
+      <form class="contact-form" id="mgLeadForm" novalidate>
+        <div class="form-group">
+          <label for="mg_name">Full Name <span style="color:var(--gold)">*</span></label>
+          <input type="text" id="mg_name" name="name" placeholder="John Smith" required autocomplete="name" />
+          <span class="form-error" id="mg_name_error"></span>
+        </div>
+        <div class="form-group">
+          <label for="mg_phone">Phone <span style="color:var(--gold)">*</span></label>
+          <input type="tel" id="mg_phone" name="phone" placeholder="(978) 000-0000" required autocomplete="tel" />
+          <span class="form-error" id="mg_phone_error"></span>
+        </div>
+        <div class="form-group">
+          <label for="mg_email">Email <span style="color:var(--gold)">*</span></label>
+          <input type="email" id="mg_email" name="email" placeholder="john@example.com" required autocomplete="email" />
+          <span class="form-error" id="mg_email_error"></span>
+        </div>
+        <div class="form-group">
+          <label for="mg_message">Tell us about your project</label>
+          <textarea id="mg_message" name="message" rows="4" placeholder="What are you looking to do?"></textarea>
+        </div>
+        <div class="g-recaptcha" data-sitekey="6Lf6EvYsAAAAACvhmVv7noOqYWoBMNTpncggwrW_" style="margin-bottom:16px"></div>
+        <span class="form-error" id="mg_captcha_error"></span>
+        <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;padding:16px;">
+          Get My Free Estimate
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p id="mg_form_success" style="display:none;text-align:center;color:var(--gold);margin-top:16px;font-weight:600;">✓ Thank you! We'll be in touch within 24 hours.</p>
+      </form>
+    </div>
+  </section>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+  (function(){
+    var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
+    var SERVICE='Kitchen Remodeling'; var LEAD_SOURCE='blog/artigo';
+    var form=document.getElementById('mgLeadForm'); if(!form) return;
+    function val(n){var el=form.querySelector('[name="'+n+'"]');return (el&&el.value||'').trim();}
+    function err(id,m){var e=document.getElementById(id);if(e)e.textContent=m||'';}
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+      err('mg_name_error');err('mg_phone_error');err('mg_email_error');err('mg_captcha_error');
+      var ok=true;
+      if(!val('name')){err('mg_name_error','Please enter your name.');ok=false;}
+      if(!val('phone')){err('mg_phone_error','Please enter your phone.');ok=false;}
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))){err('mg_email_error','Please enter a valid email.');ok=false;}
+      var token=(window.grecaptcha&&grecaptcha.getResponse())||'';
+      if(!token){err('mg_captcha_error','Please confirm you are not a robot.');ok=false;}
+      if(!ok) return;
+      var btn=form.querySelector('button[type="submit"]');var orig=btn.innerHTML;btn.disabled=true;btn.innerHTML='Sending…';
+      try{
+        var r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+          name:val('name'),email:val('email'),phone:val('phone'),message:val('message'),
+          service:SERVICE,address:'',source:LEAD_SOURCE,tags:['blog/artigo'],opp_prefix:'BLOG/ARTIGO',
+          recaptcha_token:token
+        })});
+        if(!r.ok) throw new Error(r.status);
+        document.getElementById('mg_form_success').style.display='block';
+        form.reset(); if(window.grecaptcha)grecaptcha.reset();
+        btn.disabled=false;btn.innerHTML=orig;
+      }catch(_){btn.disabled=false;btn.innerHTML=orig;err('mg_captcha_error','Something went wrong. Please call us at +1 978-419-3358.');}
+    });
+  })();
+  </script>
+
 </main>
 
 <!-- ════════════════════════════════════════════════════════
