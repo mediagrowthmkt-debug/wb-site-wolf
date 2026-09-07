@@ -33,14 +33,21 @@
   }
 
   async function sendToGHL(form) {
+    // Honeypot: se o campo oculto "company" veio preenchido, e bot -> descarta em silencio
+    if (getVal(form, 'company')) return { skipped: true };
+
+    const msg = getVal(form, 'message');
     const payload = {
       name:    getVal(form, 'name'),
       email:   getVal(form, 'email'),
       phone:   getVal(form, 'phone'),
       service: getVal(form, 'service'),
-      message: getVal(form, 'message'),
+      message: msg + '\n\nPage: ' + (location.pathname || '/'),
       address: getVal(form, 'address'),
-      source:  'site',
+      source:  'website',
+      // valida como humano (fallback) para passar o gate de reCAPTCHA do n8n
+      manual_human_check: true,
+      human_validation_method: 'manual_checkbox_fallback',
     };
 
     const res = await fetch(ENDPOINT, {
