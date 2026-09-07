@@ -571,7 +571,7 @@
 
       <!-- CTA Buttons -->
       <div class="nav__cta">
-        <a href="/contact" class="btn btn--gold btn--sm btn--pulse">Get a Quote</a>
+        <a href="#lead" class="btn btn--gold btn--sm btn--pulse" data-lead-open>Get a Quote</a>
         <a href="tel:+19784193358" class="btn btn--outline btn--sm">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.61.58 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.26.2 2.49.58 3.61a1 1 0 01-.25 1.01l-2.21 2.17z"/></svg>
           978-419-3358
@@ -598,7 +598,7 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
       <div class="mobile-cta">
-        <a href="/contact" class="btn btn--gold">Get a Free Quote</a>
+        <a href="#lead" class="btn btn--gold" data-lead-open>Get a Free Quote</a>
         <a href="tel:+19784193358" class="btn btn--outline">Call Us Now</a>
       </div>
     </div>
@@ -613,11 +613,11 @@
         <h1>Home Additions Peabody, MA</h1>
         <p>Wolf Carpenters builds home additions Peabody, MA homeowners rely on, with our own in-house crew, room additions, garage conversions, second-story additions and in-law suites, built on time or we pay. Below you can see real additions we built, every type we handle, what they cost in Peabody, how permits work with the town, and answers to the questions homeowners ask most.</p>
         <div class="seo-actions">
-          <a href="#quote" class="btn btn--gold">Request a Free Estimate</a>
+          <a href="#lead" class="btn btn--gold" data-lead-open>Request a Free Estimate</a>
           <a href="tel:+19784193358" class="btn btn--outline">+1 978-419-3358</a>
         </div>
       </div>
-      <img src="/images/projects/room-addition-peabody-ma.webp" alt="Home addition in Peabody, MA by Wolf Carpenters with new roofline and large windows" width="1200" height="1028" loading="eager" fetchpriority="high" style="aspect-ratio:4/3;max-height:360px;object-fit:cover">
+      <div class="vid-wrap"><video src="/videos/pages/home-addition-peabody.mp4" poster="/videos/pages/home-addition-peabody-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Home addition in Peabody, MA by Wolf Carpenters" style="aspect-ratio:4/3;max-height:360px;width:100%;object-fit:cover;display:block"></video><button type="button" class="vid-sound" data-vid-sound aria-label="Turn sound on"></button></div>
     </div>
   </section>
 
@@ -929,7 +929,7 @@
       <p>Wolf Carpenters holds a <strong>5.0 rating across 100+ Google reviews</strong> from North Shore homeowners. Families across Peabody and the surrounding towns have trusted our in-house crew with their additions and whole-home projects. You can read every review, in the homeowners' own words, on our Google profile.</p>
       <div class="seo-actions">
         <a href="https://maps.app.goo.gl/LNopETPziYvBu3cY8" class="btn btn--gold" target="_blank" rel="noopener">Read our Google reviews</a>
-        <a href="#quote" class="btn btn--outline">Request a Free Estimate</a>
+        <a href="#lead" class="btn btn--outline" data-lead-open>Request a Free Estimate</a>
       </div>
     </div>
   </section>
@@ -954,75 +954,218 @@
     </div>
   </section>
 
-  <!-- ══ MG LEAD FORM (source: blog/artigo) ══ -->
-  <section class="section section--muted" id="quote">
-    <div class="container" style="max-width:640px">
-      <div class="section-tag">Free Estimate</div>
-      <h2>Get your free Home Addition estimate in Peabody, MA</h2>
-      <p style="margin-bottom:22px">Fill out the form and our in-house team gets back to you within 24 hours. No subcontractors, no pressure.</p>
-      <form class="contact-form" id="mgLeadForm" novalidate>
-        <div class="form-group">
-          <label for="mg_name">Full Name <span style="color:var(--gold)">*</span></label>
-          <input type="text" id="mg_name" name="name" placeholder="John Smith" required autocomplete="name" />
-          <span class="form-error" id="mg_name_error"></span>
+<style id="lead-modal-css">
+.lead-modal[hidden]{display:none}
+.lead-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Roboto',sans-serif}
+.lead-modal__overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px)}
+.lm-card{position:relative;background:#161616;color:#fff;border:1px solid #2b2b2b;border-top:4px solid var(--gold,#F5C518);border-radius:16px;max-width:480px;width:100%;max-height:94vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.lm-close{position:absolute;top:10px;right:14px;border:none;background:none;font-size:30px;line-height:1;cursor:pointer;color:#8a8a8a;z-index:2}
+.lm-close:hover{color:#fff}
+.lm-brand{display:flex;align-items:center;gap:14px;padding:22px 26px 6px}
+.lm-brand img{height:52px;width:auto;display:block}
+.lm-brand__txt strong{display:block;font-size:18px;line-height:1.2}
+.lm-brand__txt span{font-size:12.5px;color:var(--gold,#F5C518);font-weight:600}
+.lm-steps{padding:14px 26px 0}
+.lm-steps__bar{height:5px;background:#2b2b2b;border-radius:999px;overflow:hidden}
+.lm-steps__bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold,#F5C518),#f7d03e);border-radius:999px;transition:width .3s ease}
+.lm-steps__labels{display:flex;justify-content:space-between;margin-top:8px}
+.lm-steps__labels span{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:#777;font-weight:700}
+.lm-steps__labels span.is-active{color:#fff}
+.lm-steps__labels span.is-done{color:var(--gold,#F5C518)}
+#leadModalForm{padding:16px 26px 26px}
+.lm-step h3{margin:6px 0 16px;font-size:20px}
+.lm-step .form-group{margin-bottom:14px}
+.lm-step label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#ddd}
+.lm-step input,.lm-step textarea{width:100%;box-sizing:border-box;background:#0f0f0f;border:1px solid #333;border-radius:6px;color:#fff;padding:12px 14px;font-size:15px;font-family:inherit}
+.lm-step input:focus,.lm-step textarea:focus{outline:none;border-color:var(--gold,#F5C518)}
+.lm-step input::placeholder,.lm-step textarea::placeholder{color:#666}
+.lm-sublabel{display:block;font-size:13px;font-weight:600;margin:4px 0 8px;color:#ddd}
+.lm-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.lm-chip{border:1px solid #3a3a3a;background:#0f0f0f;color:#ddd;border-radius:999px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.lm-chip:hover{border-color:var(--gold,#F5C518)}
+.lm-chip.is-on{background:var(--gold,#F5C518);color:#111;border-color:var(--gold,#F5C518)}
+.lm-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.lm-actions{display:flex;gap:10px;margin-top:20px}
+.lm-actions .btn{flex:1;justify-content:center;padding:14px}
+.lm-summary{background:#0f0f0f;border:1px solid #2b2b2b;border-radius:8px;padding:14px 16px;margin-bottom:16px;font-size:14px;line-height:1.7}
+.lm-summary b{color:var(--gold,#F5C518);font-weight:600}
+.form-error{display:block;color:#ff6b6b;font-size:12px;margin-top:5px;min-height:1px}
+.lm-ok{display:none;text-align:center;color:var(--gold,#F5C518);font-weight:700;margin-top:14px;font-size:15px}
+@media(max-width:520px){.lm-brand img{height:44px}.lm-card{border-radius:14px}}
+</style>
+
+  <!-- ══ MG LEAD POPUP WIZARD (source blog/artigo) ══ -->
+  <div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="lmTitle" hidden>
+    <div class="lead-modal__overlay" data-lead-close></div>
+    <div class="lm-card">
+      <button class="lm-close" data-lead-close aria-label="Close">&times;</button>
+      <div class="lm-brand">
+        <img src="/images/wp-uploads/2024/05/logo-wolf-desktop.png" alt="Wolf Carpenters" />
+        <div class="lm-brand__txt">
+          <strong id="lmTitle">Free Home Addition Estimate</strong>
+          <span>In-house crew · Reply within 24h</span>
         </div>
-        <div class="form-group">
-          <label for="mg_phone">Phone <span style="color:var(--gold)">*</span></label>
-          <input type="tel" id="mg_phone" name="phone" placeholder="(978) 000-0000" required autocomplete="tel" />
-          <span class="form-error" id="mg_phone_error"></span>
+      </div>
+      <div class="lm-steps">
+        <div class="lm-steps__bar"><i id="lmBar" style="width:33%"></i></div>
+        <div class="lm-steps__labels">
+          <span class="is-active" data-lbl="1">Project</span>
+          <span data-lbl="2">Details</span>
+          <span data-lbl="3">Confirm</span>
         </div>
-        <div class="form-group">
-          <label for="mg_email">Email <span style="color:var(--gold)">*</span></label>
-          <input type="email" id="mg_email" name="email" placeholder="john@example.com" required autocomplete="email" />
-          <span class="form-error" id="mg_email_error"></span>
+      </div>
+      <form id="leadModalForm" novalidate>
+        <!-- STEP 1 -->
+        <div class="lm-step" data-step="1">
+          <h3>What can we help you with?</h3>
+          <div class="form-group">
+            <label for="lm_message">Tell us about your project</label>
+            <textarea id="lm_message" name="message" rows="3" placeholder="e.g. Full home addition, scope, must-haves"></textarea>
+          </div>
+          <span class="lm-sublabel">When do you want to start?</span>
+          <div class="lm-chips" id="lmChips">
+            <button type="button" class="lm-chip" data-val="ASAP">ASAP</button>
+            <button type="button" class="lm-chip" data-val="1-3 months">1-3 months</button>
+            <button type="button" class="lm-chip" data-val="3-6 months">3-6 months</button>
+            <button type="button" class="lm-chip" data-val="Just exploring">Just exploring</button>
+          </div>
+          <input type="hidden" name="timeframe" id="lm_timeframe" />
+          <div class="lm-actions"><button type="button" class="btn btn--gold" data-next>Continue &rarr;</button></div>
         </div>
-        <div class="form-group">
-          <label for="mg_message">Tell us about your project</label>
-          <textarea id="mg_message" name="message" rows="4" placeholder="What are you looking to do?"></textarea>
+        <!-- STEP 2 -->
+        <div class="lm-step" data-step="2" hidden>
+          <h3>Where can we reach you?</h3>
+          <div class="form-group">
+            <label for="lm_name">Full Name <span style="color:var(--gold,#F5C518)">*</span></label>
+            <input type="text" id="lm_name" name="name" placeholder="John Smith" autocomplete="name" />
+            <span class="form-error" id="lm_name_error"></span>
+          </div>
+          <div class="form-group">
+            <label for="lm_phone">Phone <span style="color:var(--gold,#F5C518)">*</span></label>
+            <input type="tel" id="lm_phone" name="phone" placeholder="(978) 000-0000" autocomplete="tel" />
+            <span class="form-error" id="lm_phone_error"></span>
+          </div>
+          <div class="form-group">
+            <label for="lm_email">Email <span style="color:var(--gold,#F5C518)">*</span></label>
+            <input type="email" id="lm_email" name="email" placeholder="john@example.com" autocomplete="email" />
+            <span class="form-error" id="lm_email_error"></span>
+          </div>
+          <div class="lm-actions">
+            <button type="button" class="btn btn--outline" data-back>&larr; Back</button>
+            <button type="button" class="btn btn--gold" data-next>Continue &rarr;</button>
+          </div>
         </div>
-        <div class="g-recaptcha" data-sitekey="6Lf6EvYsAAAAACvhmVv7noOqYWoBMNTpncggwrW_" style="margin-bottom:16px"></div>
-        <span class="form-error" id="mg_captcha_error"></span>
-        <button type="submit" class="btn btn--gold" style="width:100%;justify-content:center;padding:16px;">
-          Get My Free Estimate
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <p id="mg_form_success" style="display:none;text-align:center;color:var(--gold);margin-top:16px;font-weight:600;">✓ Thank you! We'll be in touch within 24 hours.</p>
+        <!-- STEP 3 -->
+        <div class="lm-step" data-step="3" hidden>
+          <h3>Almost done</h3>
+          <div class="lm-summary" id="lmSummary"></div>
+          <input type="text" name="company" class="lm-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="g-recaptcha" data-sitekey="6Lf6EvYsAAAAACvhmVv7noOqYWoBMNTpncggwrW_"></div>
+          <span class="form-error" id="lm_captcha_error"></span>
+          <div class="lm-actions">
+            <button type="button" class="btn btn--outline" data-back>&larr; Back</button>
+            <button type="submit" class="btn btn--gold">Get My Free Estimate</button>
+          </div>
+          <p class="lm-ok" id="lm_form_success">✓ Thank you! We'll be in touch within 24 hours.</p>
+        </div>
       </form>
     </div>
-  </section>
+  </div>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
-    var SERVICE='Home Addition'; var LEAD_SOURCE='blog/artigo';
-    var form=document.getElementById('mgLeadForm'); if(!form) return;
-    function val(n){var el=form.querySelector('[name="'+n+'"]');return (el&&el.value||'').trim();}
-    function err(id,m){var e=document.getElementById(id);if(e)e.textContent=m||'';}
-    form.addEventListener('submit',async function(e){
+    var SERVICE='Home Addition';
+    var modal=document.getElementById('leadModal'), form=document.getElementById('leadModalForm');
+    if(!modal||!form) return;
+    var step=1, TOTAL=3;
+    function v(n){var e=form.querySelector('[name="'+n+'"]');return (e&&e.value||'').trim();}
+    function err(id,m){var e=document.getElementById(id); if(e)e.textContent=m||'';}
+    function show(s){
+      step=s;
+      form.querySelectorAll('.lm-step').forEach(function(el){ el.hidden = (+el.dataset.step!==s); });
+      document.getElementById('lmBar').style.width=Math.round(s/TOTAL*100)+'%';
+      modal.querySelectorAll('.lm-steps__labels span').forEach(function(sp){
+        var i=+sp.dataset.lbl; sp.classList.toggle('is-active',i===s); sp.classList.toggle('is-done',i<s);
+      });
+      if(s===3){
+        document.getElementById('lmSummary').innerHTML =
+          '<div><b>Service:</b> '+SERVICE+'</div>'+
+          (v('timeframe')?'<div><b>Start:</b> '+v('timeframe')+'</div>':'')+
+          '<div><b>Name:</b> '+(v('name')||'-')+'</div>'+
+          '<div><b>Phone:</b> '+(v('phone')||'-')+'</div>'+
+          '<div><b>Email:</b> '+(v('email')||'-')+'</div>';
+      }
+    }
+    function validStep(s){
+      if(s===2){
+        err('lm_name_error');err('lm_phone_error');err('lm_email_error');
+        var ok=true;
+        if(!v('name')){err('lm_name_error','Please enter your name.');ok=false;}
+        if(!v('phone')){err('lm_phone_error','Please enter your phone.');ok=false;}
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))){err('lm_email_error','Please enter a valid email.');ok=false;}
+        return ok;
+      }
+      return true;
+    }
+    function openM(e){ if(e&&e.preventDefault)e.preventDefault(); modal.hidden=false; document.body.style.overflow='hidden'; show(1); setTimeout(function(){var m=document.getElementById('lm_message'); if(m)m.focus();},60); }
+    function closeM(){ modal.hidden=true; document.body.style.overflow=''; }
+    document.querySelectorAll('[data-lead-open]').forEach(function(el){ el.addEventListener('click', openM); });
+    modal.querySelectorAll('[data-lead-close]').forEach(function(el){ el.addEventListener('click', closeM); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !modal.hidden) closeM(); });
+    form.querySelectorAll('[data-next]').forEach(function(b){ b.addEventListener('click', function(){ if(validStep(step)) show(Math.min(step+1,TOTAL)); }); });
+    form.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click', function(){ show(Math.max(step-1,1)); }); });
+    // chips (timeframe)
+    var chips=document.getElementById('lmChips');
+    if(chips){ chips.addEventListener('click', function(e){ var c=e.target.closest('.lm-chip'); if(!c)return;
+      chips.querySelectorAll('.lm-chip').forEach(function(x){x.classList.remove('is-on');}); c.classList.add('is-on');
+      document.getElementById('lm_timeframe').value=c.dataset.val; }); }
+    form.addEventListener('submit', async function(e){
       e.preventDefault();
-      err('mg_name_error');err('mg_phone_error');err('mg_email_error');err('mg_captcha_error');
-      var ok=true;
-      if(!val('name')){err('mg_name_error','Please enter your name.');ok=false;}
-      if(!val('phone')){err('mg_phone_error','Please enter your phone.');ok=false;}
-      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))){err('mg_email_error','Please enter a valid email.');ok=false;}
+      err('lm_captcha_error');
+      if(v('company')) return; // honeypot
       var token=(window.grecaptcha&&grecaptcha.getResponse())||'';
-      if(!token){err('mg_captcha_error','Please confirm you are not a robot.');ok=false;}
-      if(!ok) return;
-      var btn=form.querySelector('button[type="submit"]');var orig=btn.innerHTML;btn.disabled=true;btn.innerHTML='Sending…';
+      if(!token){err('lm_captcha_error','Please confirm you are not a robot.');return;}
+      var btn=form.querySelector('button[type="submit"]');var o=btn.innerHTML;btn.disabled=true;btn.innerHTML='Sending…';
+      var msg=v('message'); var tf=v('timeframe'); var full=(tf?('['+tf+'] '):'')+msg;
       try{
         var r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-          name:val('name'),email:val('email'),phone:val('phone'),message:val('message'),
-          service:SERVICE,address:'',source:LEAD_SOURCE,tags:['blog/artigo'],opp_prefix:'BLOG/ARTIGO',
+          name:v('name'),email:v('email'),phone:v('phone'),message:full,
+          service:SERVICE,address:'',source:'blog/artigo',tags:['blog/artigo'],opp_prefix:'BLOG/ARTIGO',
           recaptcha_token:token
         })});
-        if(!r.ok) throw new Error(r.status);
-        document.getElementById('mg_form_success').style.display='block';
+        if(!r.ok) throw 0;
+        document.getElementById('lm_form_success').style.display='block';
         form.reset(); if(window.grecaptcha)grecaptcha.reset();
-        btn.disabled=false;btn.innerHTML=orig;
-      }catch(_){btn.disabled=false;btn.innerHTML=orig;err('mg_captcha_error','Something went wrong. Please call us at +1 978-419-3358.');}
+        btn.disabled=false;btn.innerHTML=o;
+        setTimeout(closeM, 2600);
+      }catch(_){btn.disabled=false;btn.innerHTML=o;err('lm_captcha_error','Something went wrong. Please call +1 978-419-3358.');}
     });
   })();
   </script>
+
+
+<style id="vid-sound-css">
+.vid-wrap{position:relative;display:block;line-height:0}
+.vid-sound{position:absolute;right:12px;bottom:12px;z-index:3;width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;transition:.15s;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.vid-sound:hover{background:var(--gold,#F5C518);color:#111}
+.vid-sound svg{width:20px;height:20px;pointer-events:none}
+</style>
+
+<script id="vid-sound-js">
+(function(){
+  var ON='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>', OFF='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 12A4.5 4.5 0 0014 7.97v2.21l2.45 2.45c.03-.2.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0021 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+  document.querySelectorAll('[data-vid-sound]').forEach(function(btn){
+    var vid=btn.parentElement.querySelector('video'); if(!vid) return;
+    btn.innerHTML=OFF;
+    btn.addEventListener('click',function(){
+      vid.muted=!vid.muted;
+      if(!vid.muted){ if(vid.paused){try{vid.play();}catch(e){}} btn.innerHTML=ON; btn.setAttribute('aria-label','Turn sound off'); }
+      else { btn.innerHTML=OFF; btn.setAttribute('aria-label','Turn sound on'); }
+    });
+  });
+})();
+</script>
 
 </main>
 
