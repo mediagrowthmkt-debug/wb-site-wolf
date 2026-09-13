@@ -208,6 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Form submit → GHL (handled by js/ghl-form.js) ─────── */
   // ghl-form.js, loaded after main.js, owns all form submissions.
 
+  /* ── Video sound toggle (global, hero .vid-wrap em todas as páginas) ── */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-vid-sound]');
+    if (!b) return;
+    const wrap = b.closest('.vid-wrap');
+    const v = wrap && wrap.querySelector('video');
+    if (!v) return;
+    v.muted = !v.muted;
+    b.classList.toggle('unmuted', !v.muted);
+  });
+
   /* ── Video sound toggle ────────────────────────────────── */
   const videoSoundBtn = document.getElementById('videoSoundBtn');
   const aboutVideo = document.getElementById('aboutVideo');
