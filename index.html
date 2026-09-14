@@ -470,8 +470,10 @@ h4 { font-size: 1rem; }
 }
 .about-home__img {
   width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+  background: #111;
   border-radius: 12px;
 }
 .video-sound-toggle {
@@ -544,7 +546,7 @@ h4 { font-size: 1rem; }
   padding-left: 20px;
 }
 .about-home__body { color: var(--gray); margin-bottom: 32px; font-size: 1.02rem; }
-.about-home__sig img { height: 50px; opacity: .9; filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg); }
+.about-home__sig img { height: 50px; width: auto; opacity: .9; filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg); }
 .stats-bar {
   background: var(--gold);
   padding: 60px 0;
@@ -705,6 +707,77 @@ h4 { font-size: 1rem; }
 .trust-item svg { width: 28px; height: 28px; fill: var(--gold); flex-shrink: 0; }
 .trust-item strong { color: var(--white); display: block; font-size: 1rem; }
 .before-after { background: var(--black); }
+/* Video marquee (Real Transformations) */
+.vmarquee {
+  margin-top: 44px;
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+.vmarquee__track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: vmarquee-scroll 90s linear infinite;
+  will-change: transform;
+}
+.vmarquee:hover .vmarquee__track { animation-play-state: paused; }
+.vmarquee.is-playing .vmarquee__track { animation-play-state: paused; }
+.vmarquee__item {
+  position: relative;
+  flex: 0 0 auto;
+  width: 236px;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0,0,0,.45);
+  cursor: pointer;
+}
+.vmarquee__item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vmarquee__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(10,10,10,.42);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  color: #fff;
+  transition: opacity .25s ease, transform .25s ease, background .25s ease;
+}
+.vmarquee__play svg { width: 26px; height: 26px; fill: currentColor; margin-left: 3px; }
+.vmarquee__item:hover .vmarquee__play { background: var(--gold); color: var(--primary); transform: scale(1.06); }
+.vmarquee__item.is-playing .vmarquee__play { opacity: 0; pointer-events: none; }
+@keyframes vmarquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 9px)); }
+}
+@media (max-width: 768px) {
+  .vmarquee__item { width: 170px; border-radius: 12px; }
+  .vmarquee__track { gap: 12px; animation-duration: 70s; }
+  @keyframes vmarquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-50% - 6px)); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vmarquee__track { animation: none; }
+  .vmarquee { overflow-x: auto; }
+}
 .ba-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1558,7 +1631,7 @@ h4 { font-size: 1rem; }
   .hero__bg::before {
     background: linear-gradient(105deg, rgba(10,10,10,.60) 45%, rgba(10,10,10,.20) 100%);
   }
-  .hero__bg-img { object-position: center top; }
+  .hero__bg-img { object-position: 72% 18%; }
   .hero .container {
     padding-top: 180px;
   }
@@ -2098,8 +2171,8 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
       <!-- Image Column -->
       <div class="about-home__img-wrap" data-reveal="left">
         <video class="about-home__img" id="aboutVideo" muted loop playsinline preload="none"
-               width="720" height="1280"
-               data-poster="videos/poster-kitchen.webp" data-src="videos/video-wolf-kitchen.mp4"></video>
+               width="1280" height="720"
+               data-poster="videos/poster-kitchen.webp?v=2" data-src="videos/video-wolf-kitchen.mp4?v=2"></video>
         <button class="video-sound-toggle" id="videoSoundBtn" aria-label="Toggle sound">
           <svg class="sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -2195,8 +2268,8 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="videos/our-services/kitchen-3.webp" width="1000" height="1250" alt="Kitchen Renovation" loading="lazy" class="service-image" />
-        <video src="videos/our-services/kitchen-3.mp4" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
+        <img src="videos/our-services/kitchen-3.webp?v=2" width="1000" height="1250" alt="Kitchen Renovation" loading="lazy" class="service-image" />
+        <video src="videos/our-services/kitchen-3.mp4?v=2" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Kitchen Renovation</div>
@@ -2205,8 +2278,8 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="videos/our-services/bathroom-remodeling-2.webp" width="1000" height="1250" alt="Bathroom Remodeling" loading="lazy" class="service-image" />
-        <video src="videos/our-services/bathroom-remodeling-2.mp4" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
+        <img src="videos/our-services/bathroom-remodeling-2.webp?v=2" width="1000" height="1250" alt="Bathroom Remodeling" loading="lazy" class="service-image" />
+        <video src="videos/our-services/bathroom-remodeling-2.mp4?v=2" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
           <div class="service-card__name">Bathroom Remodeling</div>
@@ -2215,7 +2288,7 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
       </div>
 
       <div class="service-card" style="flex:0 0 25%;">
-        <img src="videos/our-services/deck-4.webp" width="1000" height="750" alt="Deck Renovation" loading="lazy" class="service-image" />
+        <img src="videos/our-services/deck-4.webp?v=2" width="1000" height="1336" alt="Deck Renovation" loading="lazy" class="service-image" />
         <video src="videos/our-services/deck-4.mp4" class="service-video" preload="none" muted loop playsinline style="display:none;"></video>
         <div class="service-card__overlay">
           <div class="service-card__plus">+</div>
@@ -2291,49 +2364,49 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
     <div class="photo-carousel" data-reveal>
       <div class="photo-carousel__track">
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834287607420961_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834287607420961_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834288832207178_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1747645245_3635834288832207178_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1749678420_3652889801258298859_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1749678420_3652889801258298859_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1750626052_3660839118225815845_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1750626052_3660839118225815845_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1751922037_3671710624237684943_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1751922037_3671710624237684943_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754254988_3691280836188689202_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754254988_3691280836188689202_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754513167_3693446596960628574_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754513167_3693446596960628574_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080924979921081_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080924979921081_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080925567155419_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080925567155419_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1756934487_3713758097849695982_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1756934487_3713758097849695982_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1757706246_3720232082737324994_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1757706246_3720232082737324994_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1762985382_3764516692115323365_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1762985382_3764516692115323365_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261228790665_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261228790665_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261522391695_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261522391695_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261597887631_49024863707.webp" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
+          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261597887631_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
       </div>
     </div>
@@ -2360,68 +2433,32 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
       <p class="section-subtitle">See the difference our craftsmanship makes: real projects, real results, right here in Peabody, MA & North Shore.</p>
     </div>
 
-    <div class="ba-grid">
+  </div>
 
-      <!-- Kitchen -->
-      <article class="ba-card" data-reveal data-reveal-delay="1">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="images/wp-uploads/2024/06/RESIDENCIAL.webp" width="1000" height="1250"
-                 alt="Kitchen before remodeling by Wolf Carpenters" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="images/wp-uploads/2024/06/KITCHEN.webp" width="1000" height="1250"
-                 alt="Dream kitchen after remodeling by Wolf Carpenters" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Kitchen Remodeling</h3>
-          <a href="services#kitchen-remodeling" class="btn btn--primary btn--sm">View Service</a>
-        </div>
-      </article>
-
-      <!-- Bathroom -->
-      <article class="ba-card" data-reveal data-reveal-delay="2">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="images/BanheiroAntes.webp" width="1200" height="1524"
-                 alt="Bathroom before remodeling by Wolf Carpenters" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="images/BanheiroDepois.webp" width="1200" height="1535"
-                 alt="Modern bathroom after remodeling by Wolf Carpenters" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Bathroom Remodeling</h3>
-          <a href="services#bathroom-remodeling" class="btn btn--primary btn--sm">View Service</a>
-        </div>
-      </article>
-
-      <!-- Deck -->
-      <article class="ba-card" data-reveal data-reveal-delay="3">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="images/DeckAntes.webp" width="1200" height="1603"
-                 alt="Backyard before deck installation by Wolf Carpenters" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="images/DeckDepois.webp" width="1200" height="1604"
-                 alt="New deck installation by Wolf Carpenters" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Deck Installation</h3>
-          <a href="services#deck-installation" class="btn btn--primary btn--sm">View Service</a>
-        </div>
-      </article>
-
+  <div class="vmarquee" id="transformationsMarquee" aria-label="Wolf Carpenters project videos">
+    <div class="vmarquee__track">
+        <div class="vmarquee__item"><video src="videos/transformations/reel-1.mp4?v=2" poster="videos/transformations/reel-1.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-2.mp4?v=2" poster="videos/transformations/reel-2.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-3.mp4?v=2" poster="videos/transformations/reel-3.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-4.mp4?v=2" poster="videos/transformations/reel-4.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-5.mp4?v=2" poster="videos/transformations/reel-5.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-6.mp4?v=2" poster="videos/transformations/reel-6.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-7.mp4?v=2" poster="videos/transformations/reel-7.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-8.mp4?v=2" poster="videos/transformations/reel-8.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-9.mp4?v=2" poster="videos/transformations/reel-9.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-10.mp4?v=2" poster="videos/transformations/reel-10.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="videos/transformations/reel-11.mp4?v=2" poster="videos/transformations/reel-11.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-1.mp4?v=2" poster="videos/transformations/reel-1.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-2.mp4?v=2" poster="videos/transformations/reel-2.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-3.mp4?v=2" poster="videos/transformations/reel-3.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-4.mp4?v=2" poster="videos/transformations/reel-4.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-5.mp4?v=2" poster="videos/transformations/reel-5.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-6.mp4?v=2" poster="videos/transformations/reel-6.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-7.mp4?v=2" poster="videos/transformations/reel-7.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-8.mp4?v=2" poster="videos/transformations/reel-8.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-9.mp4?v=2" poster="videos/transformations/reel-9.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-10.mp4?v=2" poster="videos/transformations/reel-10.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="videos/transformations/reel-11.mp4?v=2" poster="videos/transformations/reel-11.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
     </div>
   </div>
 </section>
@@ -3123,6 +3160,46 @@ window.WOLF_CONFIG = window.WOLF_CONFIG || { GOOGLE_PLACES_API_KEY:'', GOOGLE_PL
         setTimeout(closeM, 2600);
       }catch(_){btn.disabled=false;btn.innerHTML=o;err('ls_captcha_error','Something went wrong. Please call +1 978-419-3358.');}
     });
+  })();
+  </script>
+
+  <script>
+  /* Real Transformations video marquee: click to play WITH sound, one at a time */
+  (function(){
+    var mq = document.getElementById('transformationsMarquee');
+    if(!mq) return;
+    var items = Array.prototype.slice.call(mq.querySelectorAll('.vmarquee__item'));
+    function anyPlaying(){ return items.some(function(it){ return it.classList.contains('is-playing'); }); }
+    function stop(it){
+      var v = it.querySelector('video');
+      if(v) v.pause();
+      it.classList.remove('is-playing');
+    }
+    function stopAll(){ items.forEach(stop); mq.classList.remove('is-playing'); }
+    function playItem(it){
+      var v = it.querySelector('video');
+      if(!v) return;
+      items.forEach(function(o){ if(o!==it) stop(o); });
+      v.muted = false; v.volume = 1;
+      var p = v.play();
+      if(p && p.catch) p.catch(function(){ v.muted = true; v.play(); });
+      it.classList.add('is-playing');
+      mq.classList.add('is-playing');
+    }
+    items.forEach(function(it){
+      var v = it.querySelector('video');
+      it.addEventListener('click', function(){
+        if(it.classList.contains('is-playing')){ stop(it); if(!anyPlaying()) mq.classList.remove('is-playing'); }
+        else { playItem(it); }
+      });
+      if(v) v.addEventListener('ended', function(){ it.classList.remove('is-playing'); if(!anyPlaying()) mq.classList.remove('is-playing'); });
+    });
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(!e.isIntersecting) stopAll(); });
+      }, { threshold: 0.01 });
+      io.observe(mq);
+    }
   })();
   </script>
 

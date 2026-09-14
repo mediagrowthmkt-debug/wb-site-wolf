@@ -525,8 +525,10 @@ h4 { font-size: 1rem; }
 }
 .about-home__img {
   width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+  background: #111;
   border-radius: 12px;
 }
 .video-sound-toggle {
@@ -600,7 +602,7 @@ h4 { font-size: 1rem; }
   padding-left: 20px;
 }
 .about-home__body { color: var(--gray); margin-bottom: 32px; font-size: 1.02rem; }
-.about-home__sig img { height: 50px; opacity: .9; filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg); }
+.about-home__sig img { height: 50px; width: auto; opacity: .9; filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg); }
 
 /* ── Stats Bar ────────────────────────────────────────────── */
 .stats-bar {
@@ -1746,3 +1748,18 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
 
 /* video placeholder bg while lazy-loading */
 .about-home__img{background:#111;}
+
+/* ===== Video marquee (project reels) ===== */
+.vmarquee { margin-top: 44px; width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
+.vmarquee__track { display: flex; gap: 18px; width: max-content; animation: vmarquee-scroll 90s linear infinite; will-change: transform; }
+.vmarquee:hover .vmarquee__track { animation-play-state: paused; }
+.vmarquee.is-playing .vmarquee__track { animation-play-state: paused; }
+.vmarquee__item { position: relative; flex: 0 0 auto; width: 236px; aspect-ratio: 9 / 16; border-radius: 14px; overflow: hidden; background: #111; border: 1px solid var(--border); box-shadow: 0 12px 30px rgba(0,0,0,.45); cursor: pointer; }
+.vmarquee__item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vmarquee__play { position: absolute; inset: 0; margin: auto; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; border: none; border-radius: 50%; background: rgba(10,10,10,.42); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); color: #fff; transition: opacity .25s ease, transform .25s ease, background .25s ease; }
+.vmarquee__play svg { width: 26px; height: 26px; fill: currentColor; margin-left: 3px; }
+.vmarquee__item:hover .vmarquee__play { background: var(--gold); color: var(--primary); transform: scale(1.06); }
+.vmarquee__item.is-playing .vmarquee__play { opacity: 0; pointer-events: none; }
+@keyframes vmarquee-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
+@media (max-width: 768px) { .vmarquee__item { width: 170px; border-radius: 12px; } .vmarquee__track { gap: 12px; animation-duration: 70s; } }
+@media (prefers-reduced-motion: reduce) { .vmarquee__track { animation: none; } .vmarquee { overflow-x: auto; } }
