@@ -349,12 +349,12 @@
             <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
           </a>
           <div class="dropdown-menu">
-            <a href="general-contractors" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/05/11-150x150.jpg" alt="" loading="lazy" /></div><span>General Contractors</span></a>
-            <a href="commercial-services" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/COMERCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Commercial Services</span></a>
-            <a href="home-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/RESIDENCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Home Remodeling</span></a>
-            <a href="kitchen-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/KITCHEN-150x150.jpg" alt="" loading="lazy" /></div><span>Kitchen Remodeling</span></a>
-            <a href="bathroom-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/BATHROOM-150x150.jpg" alt="" loading="lazy" /></div><span>Bathroom Remodeling</span></a>
-            <a href="addition" class="dropdown-item"><div class="icon"><img src="../videos/our-services/additions-1.webp" alt="" loading="lazy" /></div><span>Home Addition</span></a>
+            <a href="/services/general-contractors" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/05/11-150x150.jpg" alt="" loading="lazy" /></div><span>General Contractors</span></a>
+            <a href="/services/commercial-services" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/COMERCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Commercial Services</span></a>
+            <a href="/services/home-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/RESIDENCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Home Remodeling</span></a>
+            <a href="/services/kitchen-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/KITCHEN-150x150.jpg" alt="" loading="lazy" /></div><span>Kitchen Remodeling</span></a>
+            <a href="/services/bathroom-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/BATHROOM-150x150.jpg" alt="" loading="lazy" /></div><span>Bathroom Remodeling</span></a>
+            <a href="/services/addition" class="dropdown-item"><div class="icon"><img src="../videos/our-services/additions-1.webp" alt="" loading="lazy" /></div><span>Home Addition</span></a>
             <a href="../services#deck-installation" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/DECK-150x150.jpg" alt="" loading="lazy" /></div><span>Deck Installation</span></a>
             <div class="dropdown-all"><a href="../services" class="btn btn--gold btn--sm">View All Services &rarr;</a></div>
           </div>
@@ -374,11 +374,21 @@
   <div class="mobile-menu">
     <div class="container">
       <ul>
-        <li><a href="../">Home</a></li>
-        <li><a href="../about">About Us</a></li>
-        <li><a href="../services">Services</a></li>
-        <li><a href="../blog">Blog</a></li>
-        <li><a href="../contact">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li class="mobile-svc"><details><summary>Services</summary>
+          <ul class="mobile-submenu">
+            <li><a href="/services/general-contractors">General Contractors</a></li>
+            <li><a href="/services/commercial-services">Commercial Services</a></li>
+            <li><a href="/services/home-remodeling">Home Remodeling</a></li>
+            <li><a href="/services/kitchen-remodeling">Kitchen Remodeling</a></li>
+            <li><a href="/services/bathroom-remodeling">Bathroom Remodeling</a></li>
+            <li><a href="/services/addition">Home Addition</a></li>
+            <li><a href="/services" class="mobile-viewall">View All Services &rarr;</a></li>
+          </ul>
+        </details></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
       <div class="mobile-cta">
         <a href="#lead" class="btn btn--gold" data-leadsite-open>Get a Free Quote</a>
@@ -408,10 +418,11 @@
   <div class="container">
     <div class="about-story__grid" data-reveal>
       <div>
-        <img class="about-story__img"
-             src="../images/wp-uploads/2024/06/BATHROOM.jpg"
-             alt="Bathroom remodeling Peabody, MA & North Shore by Wolf Carpenters"
-             loading="eager" />
+        <video class="about-story__img" autoplay muted loop playsinline preload="metadata"
+             poster="/videos/pages/bathroom-hero-poster.webp" style="aspect-ratio:9/16;max-height:620px;width:auto;max-width:100%;margin:0 auto;display:block;background:#111;"
+             aria-label="Bathroom remodeling project video by Wolf Carpenters">
+        <source src="/videos/pages/bathroom-hero.mp4" type="video/mp4" />
+      </video>
       </div>
       <div>
         <div class="section-tag">Bathroom Renovations</div>
@@ -506,22 +517,25 @@
     <div class="photo-carousel" style="margin-top:48px;">
       <div class="photo-carousel__track" id="brTrack">
         <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/BATHROOM.jpg" alt="Custom bathroom remodel Peabody, MA & North Shore" loading="lazy" />
+          <img src="/images/gallery/bathroom/bathroom-1.webp" alt="Modern bathroom remodeling project in Peabody, MA & North Shore by Wolf Carpenters" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/CUSTOM-CARPENTRY-2.jpg" alt="Custom bathroom vanity carpentry Boston" loading="lazy" />
+          <img src="/images/gallery/bathroom/bathroom-2.webp" alt="Modern bathroom remodeling project in Peabody, MA & North Shore by Wolf Carpenters" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/BUILT-IN-2.jpg" alt="Bathroom built-in storage renovation MA" loading="lazy" />
+          <img src="/images/gallery/bathroom/bathroom-3.webp" alt="Modern bathroom remodeling project in Peabody, MA & North Shore by Wolf Carpenters" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/RESIDENCIAL.jpg" alt="Residential bathroom project Salem Peabody" loading="lazy" />
+          <img src="/images/gallery/bathroom/bathroom-4.webp" alt="Modern bathroom remodeling project in Peabody, MA & North Shore by Wolf Carpenters" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="../videos/our-services/additions-1.webp" alt="Wolf Carpenters bathroom renovation project" loading="lazy" />
+          <img src="/images/gallery/bathroom/bathroom-5.webp" alt="Modern bathroom remodeling project in Peabody, MA & North Shore by Wolf Carpenters" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="../images/BanheiroAntes.png" alt="Full bathroom gut renovation Boston area" loading="lazy" />
+          <img src="/images/gallery/bathroom/bathroom-6.webp" alt="Modern bathroom remodeling project in Peabody, MA & North Shore by Wolf Carpenters" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img src="/images/gallery/bathroom/bathroom-7.webp" alt="Modern bathroom remodeling project in Peabody, MA & North Shore by Wolf Carpenters" loading="lazy" />
         </div>
       </div>
       <div class="carousel-nav">
@@ -536,66 +550,6 @@
   </div>
 </section>
 
-<!-- BEFORE & AFTER -->
-<section class="section before-after" style="background:var(--black);">
-  <div class="container">
-    <div class="text-center" data-reveal>
-      <div class="section-tag" style="justify-content:center;">Transformations</div>
-      <h2 class="section-title">Before &amp; <span class="gold">After</span></h2>
-      <p class="section-subtitle">See how Wolf Carpenters turns ordinary bathrooms into beautiful spaces.</p>
-    </div>
-    <div class="ba-grid">
-      <div class="ba-card" data-reveal data-reveal-delay="1">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="../images/BanheiroAntes.png" alt="Before: outdated bathroom remodel" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="../images/BanheiroDepois.png" alt="After: modern bathroom renovation" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Master Bath Renovation — Peabody, MA</h3>
-          <a href="#lead" class="btn btn--gold btn--sm" data-leadsite-open>Start Yours</a>
-        </div>
-      </div>
-      <div class="ba-card" data-reveal data-reveal-delay="2">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="../images/wp-uploads/2024/06/WOOD-FRAMING.jpg" alt="Before: bathroom framing stage" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="../images/wp-uploads/2024/06/CUSTOM-CARPENTRY-2.jpg" alt="After: custom vanity and tile bath" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Full Bathroom Gut — Salem, MA</h3>
-          <a href="#lead" class="btn btn--gold btn--sm" data-leadsite-open>Start Yours</a>
-        </div>
-      </div>
-      <div class="ba-card" data-reveal data-reveal-delay="3">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="../images/wp-uploads/2024/06/METAL-FRAME-2.jpg" alt="Before: bathroom renovation framing" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="../images/wp-uploads/2024/06/BUILT-IN-2.jpg" alt="After: built-in bathroom storage and tile" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Shower &amp; Tile Build — Lynn, MA</h3>
-          <a href="#lead" class="btn btn--gold btn--sm" data-leadsite-open>Start Yours</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- TESTIMONIAL -->
 <section class="section testimonials" style="background:var(--dark);">
@@ -850,21 +804,21 @@
           <h4>Company</h4>
           <ul>
             <li><a href="../">Home</a></li>
-            <li><a href="../about">About Us</a></li>
-            <li><a href="../services">Services</a></li>
-            <li><a href="../blog">Blog</a></li>
-            <li><a href="../contact">Contact</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="general-contractors">General Contractors</a></li>
-            <li><a href="commercial-services">Commercial Services</a></li>
-            <li><a href="home-remodeling">Home Remodeling</a></li>
-            <li><a href="kitchen-remodeling">Kitchen Remodeling</a></li>
-            <li><a href="bathroom-remodeling">Bathroom Remodeling</a></li>
-            <li><a href="addition">Home Addition</a></li>
+            <li><a href="/services/general-contractors">General Contractors</a></li>
+            <li><a href="/services/commercial-services">Commercial Services</a></li>
+            <li><a href="/services/home-remodeling">Home Remodeling</a></li>
+            <li><a href="/services/kitchen-remodeling">Kitchen Remodeling</a></li>
+            <li><a href="/services/bathroom-remodeling">Bathroom Remodeling</a></li>
+            <li><a href="/services/addition">Home Addition</a></li>
           </ul>
         </div>
         <div class="footer-col">

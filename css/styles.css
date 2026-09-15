@@ -1692,6 +1692,13 @@ h4 { font-size: 1rem; }
   .ba-side { aspect-ratio: 16/9; }
 }
 
+/* Tablet: colapsa o menu no hamburguer antes de amassar */
+@media (max-width: 1024px) {
+  .nav__links, .nav__cta { display: none; }
+  .hamburger { display: flex; }
+  .topbar { display: none; }
+}
+
 @media (max-width: 768px) {
   .section { padding: 72px 0; }
   .nav__links, .nav__cta { display: none; }
@@ -1763,3 +1770,22 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
 @keyframes vmarquee-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
 @media (max-width: 768px) { .vmarquee__item { width: 170px; border-radius: 12px; } .vmarquee__track { gap: 12px; animation-duration: 70s; } }
 @media (prefers-reduced-motion: reduce) { .vmarquee__track { animation: none; } .vmarquee { overflow-x: auto; } }
+
+/* Home Addition — faixa de estatisticas responsiva */
+.addition-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+@media (max-width: 768px) {
+  .addition-stats { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
+}
+
+/* Mobile menu — submenu de servicos (accordion nativo) + botoes CTA */
+.mobile-menu details > summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:14px 0; font-size:0.9rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border-bottom:1px solid var(--border); color:var(--gray); transition:color .3s ease; }
+.mobile-menu details > summary::-webkit-details-marker { display:none; }
+.mobile-menu details > summary::after { content:'+'; color:var(--gold); font-size:1.3rem; line-height:1; }
+.mobile-menu details[open] > summary::after { content:'\2212'; }
+.mobile-menu details > summary:hover { color:var(--gold); }
+.mobile-submenu { padding-left:16px; }
+.mobile-submenu a { font-size:0.8rem; padding:11px 0; }
+.mobile-submenu .mobile-viewall { color:var(--gold); }
+.mobile-menu .mobile-cta a { display:inline-flex; flex:1 1 0; justify-content:center; padding:14px 14px; border-bottom:none !important; font-size:0.78rem; letter-spacing:0.04em; white-space:nowrap; }
+.mobile-menu .mobile-cta .btn--gold { color:#0a0a0a !important; }
+.mobile-menu .mobile-cta .btn--outline { color:#ffffff !important; }

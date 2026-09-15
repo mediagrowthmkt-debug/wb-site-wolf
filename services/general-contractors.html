@@ -349,12 +349,12 @@
             <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
           </a>
           <div class="dropdown-menu">
-            <a href="general-contractors" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/05/11-150x150.jpg" alt="" loading="lazy" /></div><span>General Contractors</span></a>
-            <a href="commercial-services" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/COMERCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Commercial Services</span></a>
-            <a href="home-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/RESIDENCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Home Remodeling</span></a>
-            <a href="kitchen-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/KITCHEN-150x150.jpg" alt="" loading="lazy" /></div><span>Kitchen Remodeling</span></a>
-            <a href="bathroom-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/BATHROOM-150x150.jpg" alt="" loading="lazy" /></div><span>Bathroom Remodeling</span></a>
-            <a href="addition" class="dropdown-item"><div class="icon"><img src="../videos/our-services/additions-1.webp" alt="" loading="lazy" /></div><span>Home Addition</span></a>
+            <a href="/services/general-contractors" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/05/11-150x150.jpg" alt="" loading="lazy" /></div><span>General Contractors</span></a>
+            <a href="/services/commercial-services" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/COMERCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Commercial Services</span></a>
+            <a href="/services/home-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/RESIDENCIAL-150x150.jpg" alt="" loading="lazy" /></div><span>Home Remodeling</span></a>
+            <a href="/services/kitchen-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/KITCHEN-150x150.jpg" alt="" loading="lazy" /></div><span>Kitchen Remodeling</span></a>
+            <a href="/services/bathroom-remodeling" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/BATHROOM-150x150.jpg" alt="" loading="lazy" /></div><span>Bathroom Remodeling</span></a>
+            <a href="/services/addition" class="dropdown-item"><div class="icon"><img src="../videos/our-services/additions-1.webp" alt="" loading="lazy" /></div><span>Home Addition</span></a>
             <a href="../services#deck-installation" class="dropdown-item"><div class="icon"><img src="../images/wp-uploads/2024/06/DECK-150x150.jpg" alt="" loading="lazy" /></div><span>Deck Installation</span></a>
             <div class="dropdown-all"><a href="../services" class="btn btn--gold btn--sm">View All Services &rarr;</a></div>
           </div>
@@ -374,11 +374,21 @@
   <div class="mobile-menu">
     <div class="container">
       <ul>
-        <li><a href="../">Home</a></li>
-        <li><a href="../about">About Us</a></li>
-        <li><a href="../services">Services</a></li>
-        <li><a href="../blog">Blog</a></li>
-        <li><a href="../contact">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li class="mobile-svc"><details><summary>Services</summary>
+          <ul class="mobile-submenu">
+            <li><a href="/services/general-contractors">General Contractors</a></li>
+            <li><a href="/services/commercial-services">Commercial Services</a></li>
+            <li><a href="/services/home-remodeling">Home Remodeling</a></li>
+            <li><a href="/services/kitchen-remodeling">Kitchen Remodeling</a></li>
+            <li><a href="/services/bathroom-remodeling">Bathroom Remodeling</a></li>
+            <li><a href="/services/addition">Home Addition</a></li>
+            <li><a href="/services" class="mobile-viewall">View All Services &rarr;</a></li>
+          </ul>
+        </details></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
       <div class="mobile-cta">
         <a href="#lead" class="btn btn--gold" data-leadsite-open>Get a Free Quote</a>
@@ -406,12 +416,13 @@
 <!-- SERVICE INTRO -->
 <section class="section--sm" style="background:var(--dark);">
   <div class="container">
-    <div class="about-story__grid" data-reveal>
+    <div class="about-story__grid" data-reveal style="align-items:center;">
       <div>
-        <img class="about-story__img"
-             src="../images/wp-uploads/2024/05/11.jpg"
-             alt="General contractor managing a construction project in Peabody, MA & North Shore"
-             loading="eager" />
+        <video class="about-story__img" autoplay muted loop playsinline preload="metadata"
+             poster="/videos/poster-kitchen.webp?v=2" style="aspect-ratio:16/9;background:#111;"
+             aria-label="Wolf Carpenters general contracting project video">
+        <source src="/videos/video-wolf-kitchen.mp4?v=2" type="video/mp4" />
+      </video>
       </div>
       <div>
         <div class="section-tag">Complete Solutions</div>
@@ -495,107 +506,44 @@
 </section>
 
 <!-- GALLERY -->
-<section class="section gallery-strip" style="background:var(--dark);">
+<section class="before-after section" id="transformations" aria-label="Before and after project gallery">
   <div class="container">
     <div class="text-center" data-reveal>
-      <div class="section-tag" style="justify-content:center;">Our Work</div>
-      <h2 class="section-title">Projects We've <span class="gold">Completed</span></h2>
-      <p class="section-subtitle">A sample of residential and commercial projects managed by Wolf Carpenters in Peabody, MA & North Shore.</p>
-    </div>
-
-    <div class="photo-carousel" style="margin-top:48px;">
-      <div class="photo-carousel__track" id="gcTrack">
-        <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/05/11.jpg" alt="General contracting project in Boston MA" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/RESIDENCIAL.jpg" alt="Residential renovation managed by Wolf Carpenters" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/WOOD-FRAMING.jpg" alt="Structural framing by Wolf Carpenters" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/METAL-FRAME-2.jpg" alt="Metal framing general contractor Boston" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/CUSTOM-CARPENTRY-2.jpg" alt="Custom finish carpentry Peabody, MA & North Shore" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="../images/wp-uploads/2024/06/BUILT-IN-2.jpg" alt="Built-in cabinet installation Wolf Carpenters" loading="lazy" />
-        </div>
-      </div>
-      <div class="carousel-nav">
-        <button aria-label="Previous" onclick="moveCarousel('gcTrack',-1)">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button aria-label="Next" onclick="moveCarousel('gcTrack',1)">
-          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BEFORE & AFTER -->
-<section class="section before-after" style="background:var(--black);">
-  <div class="container">
-    <div class="text-center" data-reveal>
-      <div class="section-tag" style="justify-content:center;">Transformations</div>
+      <div class="section-tag" style="justify-content:center;">Real Transformations</div>
       <h2 class="section-title">Before &amp; <span class="gold">After</span></h2>
-      <p class="section-subtitle">See the difference professional general contracting makes on real projects.</p>
+      <p class="section-subtitle">See the difference our craftsmanship makes: real projects, real results, right here in Peabody, MA & North Shore.</p>
     </div>
-    <div class="ba-grid">
-      <div class="ba-card" data-reveal data-reveal-delay="1">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="../images/wp-uploads/2024/06/WOOD-FRAMING.jpg" alt="Before: rough framing stage" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="../images/wp-uploads/2024/06/RESIDENCIAL.jpg" alt="After: completed residential renovation" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Residential Renovation — Peabody, MA</h3>
-          <a href="#lead" class="btn btn--gold btn--sm" data-leadsite-open>Start Yours</a>
-        </div>
-      </div>
-      <div class="ba-card" data-reveal data-reveal-delay="2">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="../images/wp-uploads/2024/06/METAL-FRAME-2.jpg" alt="Before: metal framing in progress" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="../images/wp-uploads/2024/06/COMERCIAL.jpg" alt="After: completed commercial space" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Commercial Build-Out — Salem, MA</h3>
-          <a href="#lead" class="btn btn--gold btn--sm" data-leadsite-open>Start Yours</a>
-        </div>
-      </div>
-      <div class="ba-card" data-reveal data-reveal-delay="3">
-        <div class="ba-images">
-          <div class="ba-side ba-before">
-            <span class="ba-label">Before</span>
-            <img src="../images/wp-uploads/2024/05/11.jpg" alt="Before: construction site" loading="lazy" />
-          </div>
-          <div class="ba-side ba-after">
-            <span class="ba-label">After</span>
-            <img src="../images/wp-uploads/2024/06/CUSTOM-CARPENTRY-2.jpg" alt="After: custom finish work completed" loading="lazy" />
-          </div>
-        </div>
-        <div class="ba-footer">
-          <h3>Full Home Renovation — Danvers, MA</h3>
-          <a href="#lead" class="btn btn--gold btn--sm" data-leadsite-open>Start Yours</a>
-        </div>
-      </div>
+
+  </div>
+
+  <div class="vmarquee" id="transformationsMarquee" aria-label="Wolf Carpenters project videos">
+    <div class="vmarquee__track">
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-1.mp4?v=2" poster="/videos/transformations/reel-1.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-2.mp4?v=2" poster="/videos/transformations/reel-2.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-3.mp4?v=2" poster="/videos/transformations/reel-3.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-4.mp4?v=2" poster="/videos/transformations/reel-4.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-5.mp4?v=2" poster="/videos/transformations/reel-5.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-6.mp4?v=2" poster="/videos/transformations/reel-6.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-7.mp4?v=2" poster="/videos/transformations/reel-7.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-8.mp4?v=2" poster="/videos/transformations/reel-8.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-9.mp4?v=2" poster="/videos/transformations/reel-9.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-10.mp4?v=2" poster="/videos/transformations/reel-10.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item"><video src="/videos/transformations/reel-11.mp4?v=2" poster="/videos/transformations/reel-11.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-1.mp4?v=2" poster="/videos/transformations/reel-1.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-2.mp4?v=2" poster="/videos/transformations/reel-2.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-3.mp4?v=2" poster="/videos/transformations/reel-3.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-4.mp4?v=2" poster="/videos/transformations/reel-4.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-5.mp4?v=2" poster="/videos/transformations/reel-5.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-6.mp4?v=2" poster="/videos/transformations/reel-6.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-7.mp4?v=2" poster="/videos/transformations/reel-7.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-8.mp4?v=2" poster="/videos/transformations/reel-8.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-9.mp4?v=2" poster="/videos/transformations/reel-9.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-10.mp4?v=2" poster="/videos/transformations/reel-10.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
+        <div class="vmarquee__item" aria-hidden="true"><video src="/videos/transformations/reel-11.mp4?v=2" poster="/videos/transformations/reel-11.webp?v=2" playsinline preload="none"></video><button class="vmarquee__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>
     </div>
   </div>
 </section>
+
 
 <!-- TESTIMONIAL -->
 <section class="section testimonials" style="background:var(--dark);">
@@ -859,21 +807,21 @@
           <h4>Company</h4>
           <ul>
             <li><a href="../">Home</a></li>
-            <li><a href="../about">About Us</a></li>
-            <li><a href="../services">Services</a></li>
-            <li><a href="../blog">Blog</a></li>
-            <li><a href="../contact">Contact</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="general-contractors">General Contractors</a></li>
-            <li><a href="commercial-services">Commercial Services</a></li>
-            <li><a href="home-remodeling">Home Remodeling</a></li>
-            <li><a href="kitchen-remodeling">Kitchen Remodeling</a></li>
-            <li><a href="bathroom-remodeling">Bathroom Remodeling</a></li>
-            <li><a href="addition">Home Addition</a></li>
+            <li><a href="/services/general-contractors">General Contractors</a></li>
+            <li><a href="/services/commercial-services">Commercial Services</a></li>
+            <li><a href="/services/home-remodeling">Home Remodeling</a></li>
+            <li><a href="/services/kitchen-remodeling">Kitchen Remodeling</a></li>
+            <li><a href="/services/bathroom-remodeling">Bathroom Remodeling</a></li>
+            <li><a href="/services/addition">Home Addition</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -965,6 +913,77 @@ function moveCarousel(trackId, dir) {
 .lead-modal .form-error{display:block;color:#ff6b6b;font-size:12px;margin-top:5px;min-height:1px}
 .lm-ok{display:none;text-align:center;color:var(--gold,#F5C518);font-weight:700;margin-top:14px;font-size:15px}
 @media(max-width:520px){.lm-brand img{height:44px}.lm-card{border-radius:14px}}
+.vmarquee {
+  margin-top: 44px;
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+.vmarquee__track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: vmarquee-scroll 90s linear infinite;
+  will-change: transform;
+}
+.vmarquee:hover .vmarquee__track { animation-play-state: paused; }
+.vmarquee.is-playing .vmarquee__track { animation-play-state: paused; }
+.vmarquee__item {
+  position: relative;
+  flex: 0 0 auto;
+  width: 236px;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0,0,0,.45);
+  cursor: pointer;
+}
+.vmarquee__item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vmarquee__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(10,10,10,.42);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  color: #fff;
+  transition: opacity .25s ease, transform .25s ease, background .25s ease;
+}
+.vmarquee__play svg { width: 26px; height: 26px; fill: currentColor; margin-left: 3px; }
+.vmarquee__item:hover .vmarquee__play { background: var(--gold); color: var(--primary); transform: scale(1.06); }
+.vmarquee__item.is-playing .vmarquee__play { opacity: 0; pointer-events: none; }
+@keyframes vmarquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 9px)); }
+}
+@media (max-width: 768px) {
+  .vmarquee__item { width: 170px; border-radius: 12px; }
+  .vmarquee__track { gap: 12px; animation-duration: 70s; }
+  @keyframes vmarquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-50% - 6px)); }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vmarquee__track { animation: none; }
+  .vmarquee { overflow-x: auto; }
+}
+
 </style>
   <!-- ══ MG LEAD POPUP WIZARD (source: website) ══ -->
   <div class="lead-modal" id="leadModalSite" role="dialog" aria-modal="true" aria-labelledby="lsTitle" hidden>

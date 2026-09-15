@@ -313,6 +313,17 @@ h4 { font-size: 1rem; }
 }
 .mobile-menu a:hover { color: var(--gold); }
 .mobile-menu .mobile-cta { margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; }
+.mobile-menu details > summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:14px 0; font-size:0.9rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border-bottom:1px solid var(--border); color:var(--gray); transition:color .3s ease; }
+.mobile-menu details > summary::-webkit-details-marker { display:none; }
+.mobile-menu details > summary::after { content:'+'; color:var(--gold); font-size:1.3rem; line-height:1; }
+.mobile-menu details[open] > summary::after { content:'\2212'; }
+.mobile-menu details > summary:hover { color:var(--gold); }
+.mobile-submenu { padding-left:16px; }
+.mobile-submenu a { font-size:0.8rem; padding:11px 0; }
+.mobile-submenu .mobile-viewall { color:var(--gold); }
+.mobile-menu .mobile-cta a { display:inline-flex; flex:1 1 0; justify-content:center; padding:14px 14px; border-bottom:none !important; font-size:0.78rem; letter-spacing:0.04em; white-space:nowrap; }
+.mobile-menu .mobile-cta .btn--gold { color:#0a0a0a !important; }
+.mobile-menu .mobile-cta .btn--outline { color:#ffffff !important; }
 .hero {
   position: relative;
   min-height: 92vh;
@@ -1621,6 +1632,12 @@ h4 { font-size: 1rem; }
   .ba-images { grid-template-columns: 1fr; }
   .ba-side { aspect-ratio: 16/9; }
 }
+/* Tablet: colapsa o menu no hamburguer antes de amassar */
+@media (max-width: 1024px) {
+  .nav__links, .nav__cta { display: none; }
+  .hamburger { display: flex; }
+  .topbar { display: none; }
+}
 @media (max-width: 768px) {
   .section { padding: 72px 0; }
   .nav__links, .nav__cta { display: none; }
@@ -2065,10 +2082,20 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
     <div class="container">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="about">About Us</a></li>
-        <li><a href="services">Services</a></li>
-        <li><a href="blog">Blog</a></li>
-        <li><a href="contact">Contact</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li class="mobile-svc"><details><summary>Services</summary>
+          <ul class="mobile-submenu">
+            <li><a href="/services/general-contractors">General Contractors</a></li>
+            <li><a href="/services/commercial-services">Commercial Services</a></li>
+            <li><a href="/services/home-remodeling">Home Remodeling</a></li>
+            <li><a href="/services/kitchen-remodeling">Kitchen Remodeling</a></li>
+            <li><a href="/services/bathroom-remodeling">Bathroom Remodeling</a></li>
+            <li><a href="/services/addition">Home Addition</a></li>
+            <li><a href="/services" class="mobile-viewall">View All Services &rarr;</a></li>
+          </ul>
+        </details></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
       <div class="mobile-cta">
         <a href="#lead" class="btn btn--gold" data-leadsite-open>Get a Free Quote</a>
@@ -2382,15 +2409,6 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
           <img src="videos/our-services/fotos/wolfcarpenters_1754254988_3691280836188689202_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754513167_3693446596960628574_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080924979921081_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1754946413_3697080925567155419_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
           <img src="videos/our-services/fotos/wolfcarpenters_1756934487_3713758097849695982_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
         <div class="photo-carousel__slide">
@@ -2404,9 +2422,6 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
         </div>
         <div class="photo-carousel__slide">
           <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261522391695_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
-        </div>
-        <div class="photo-carousel__slide">
-          <img src="videos/our-services/fotos/wolfcarpenters_1771941405_3839645261597887631_49024863707.webp?v=2" width="800" height="1000" alt="Wolf Carpenters Project" loading="lazy" />
         </div>
       </div>
     </div>
@@ -2825,10 +2840,10 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
           <h3>Company</h3>
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="about">About Us</a></li>
-            <li><a href="services">Services</a></li>
-            <li><a href="blog">Blog</a></li>
-            <li><a href="contact">Contact</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
 
@@ -2836,12 +2851,12 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
         <div class="footer-col">
           <h3>Services</h3>
           <ul>
-            <li><a href="services#home-addition">Home Addition</a></li>
-            <li><a href="services#kitchen-renovation">Kitchen Renovation</a></li>
-            <li><a href="services#bathroom-remodeling">Bathroom Remodeling</a></li>
-            <li><a href="services#deck-renovation">Deck Renovation</a></li>
-            <li><a href="services#built-in-cabinets">Built-in Cabinets</a></li>
-            <li><a href="services">+ More Services</a></li>
+            <li><a href="/services/addition">Home Addition</a></li>
+            <li><a href="/services/kitchen-remodeling">Kitchen Renovation</a></li>
+            <li><a href="/services/bathroom-remodeling">Bathroom Remodeling</a></li>
+            <li><a href="/services/deck-installation">Deck Renovation</a></li>
+            <li><a href="/services">Built-in Cabinets</a></li>
+            <li><a href="/services">+ More Services</a></li>
           </ul>
         </div>
 
