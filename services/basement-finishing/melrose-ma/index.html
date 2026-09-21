@@ -700,7 +700,7 @@
 @media(max-width:520px){.lm-brand img{height:44px}.lm-card{border-radius:14px}}
 </style>
 
-  <!-- ══ MG LEAD POPUP WIZARD (source blog/artigo) ══ -->
+  <!-- ══ MG LEAD POPUP WIZARD (source website / basement seo_service) ══ -->
   <div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="lmTitle" hidden>
     <div class="lead-modal__overlay" data-lead-close></div>
     <div class="lm-card">
@@ -837,7 +837,7 @@
       try{
         var r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
           name:v('name'),email:v('email'),phone:v('phone'),message:full,
-          service:SERVICE,address:'',source:'website',tags:['blog/artigo'],opp_prefix:'BLOG/ARTIGO',
+          service:SERVICE,address:'',source:'website',tags:['basement','seo_service'],opp_prefix:'BASEMENT',
           recaptcha_token:token
         })});
         if(!r.ok) throw 0;
