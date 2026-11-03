@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://wolfcarpenters.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://wolfcarpenters.com/about</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/contact</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/kitchen-remodeling</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/bathroom-remodeling</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/home-remodeling</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/addition</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/deck-installation</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/general-contractors</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/commercial-services</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/about/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/contact/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/kitchen-remodeling/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/bathroom-remodeling/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/home-remodeling/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/addition/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/deck-installation/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/general-contractors/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/commercial-services/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wolfcarpenters.com/blog/5-signs-kitchen-remodel</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wolfcarpenters.com/blog/bathroom-renovation-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wolfcarpenters.com/blog/composite-vs-wood-deck</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -446,7 +446,7 @@
   <url><loc>https://wolfcarpenters.com/services/home-addition/nahant-ma/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wolfcarpenters.com/services/deck-installation/nahant-ma/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wolfcarpenters.com/services/general-contractors/nahant-ma/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://wolfcarpenters.com/services/basement-finishing</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wolfcarpenters.com/services/basement-finishing/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wolfcarpenters.com/services/interior-renovation</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://wolfcarpenters.com/services/basement-finishing/peabody-ma/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://wolfcarpenters.com/services/basement-finishing/salem-ma/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
