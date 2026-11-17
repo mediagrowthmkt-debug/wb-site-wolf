@@ -279,3 +279,99 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+/* mg-ia v1 (MediaGrowth): marca o lead que chegou por IA (ChatGPT, Perplexity, Gemini, Copilot, Claude).
+   1ª visita vinda de IA fica guardada 30 dias; no envio do lead pro n8n vai ai_source/ai_referrer/ai_landing
+   e, se o envio deu certo, dispara generate_lead no GA4. Não mexe em nenhum outro campo do formulário. */
+(function () {
+  var KEY = 'mg_ia', TTL = 30 * 864e5;
+  var MAPA = [
+    [/(^|\.)chatgpt\.com$|(^|\.)chat\.openai\.com$|(^|\.)openai\.com$/, 'ChatGPT'],
+    [/(^|\.)perplexity\.ai$/, 'Perplexity'],
+    [/(^|\.)gemini\.google\.com$|(^|\.)bard\.google\.com$/, 'Gemini'],
+    [/(^|\.)copilot\.microsoft\.com$|(^|\.)copilot\.cloud\.microsoft$/, 'Copilot'],
+    [/(^|\.)claude\.ai$/, 'Claude']
+  ];
+  function qual(h) {
+    h = String(h || '').toLowerCase().replace(/^www\./, '');
+    for (var i = 0; i < MAPA.length; i++) if (MAPA[i][0].test(h)) return MAPA[i][1];
+    return '';
+  }
+  function qualUtm(u) {
+    u = String(u || '').toLowerCase();
+    if (!u) return '';
+    if (/chatgpt|openai/.test(u)) return 'ChatGPT';
+    if (/perplexity/.test(u)) return 'Perplexity';
+    if (/gemini|bard/.test(u)) return 'Gemini';
+    if (/copilot/.test(u)) return 'Copilot';
+    if (/claude/.test(u)) return 'Claude';
+    return qual(u);
+  }
+  function setCookie(v) {
+    try { document.cookie = KEY + '=' + encodeURIComponent(v) + ';max-age=' + (TTL / 1000) + ';path=/;SameSite=Lax' + (location.protocol === 'https:' ? ';Secure' : ''); } catch (e) {}
+  }
+  function getCookie() {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + KEY + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function load() {
+    var raw = '';
+    try { raw = localStorage.getItem(KEY) || ''; } catch (e) {}
+    if (!raw) raw = getCookie();
+    try {
+      var o = JSON.parse(raw || '{}');
+      if (!o || !o.ia || !o._t || Date.now() - o._t > TTL) return null;
+      return o;
+    } catch (e) { return null; }
+  }
+  try {
+    if (!load()) {
+      var ref = document.referrer || '', host = '';
+      try { host = ref ? new URL(ref).hostname : ''; } catch (e) {}
+      var q = new URLSearchParams(location.search);
+      var ia = qual(host) || qualUtm(q.get('utm_source'));
+      if (ia) {
+        var s = JSON.stringify({ ia: ia, ref: ref.slice(0, 200), land: (location.pathname + location.search).slice(0, 200), _t: Date.now() });
+        try { localStorage.setItem(KEY, s); } catch (e) {}
+        setCookie(s);
+        if (window.gtag) try { gtag('set', 'user_properties', { ai_source: ia }); } catch (e) {}
+      }
+    }
+  } catch (e) {}
+  window.mgIa = function () {
+    var o = load();
+    return o ? { ai_source: o.ia, ai_referrer: o.ref || '', ai_landing: o.land || '' } : {};
+  };
+  function isLead(u) { return /easypanel\.host\/webhook\//.test(String(u || '')); }
+  function enrich(body) {
+    if (typeof body !== 'string') return body;
+    try {
+      var d = JSON.parse(body);
+      if (!d || typeof d !== 'object' || Array.isArray(d)) return body;
+      var c = window.mgIa();
+      for (var k in c) if (!d[k]) d[k] = c[k];
+      return JSON.stringify(d);
+    } catch (e) { return body; }
+  }
+  function lead(body) {
+    if (!window.gtag) return;
+    try {
+      var d = JSON.parse(body || '{}'), p = { lead_source: d.source || 'website' };
+      if (d.ai_source) p.ai_source = d.ai_source;
+      gtag('event', 'generate_lead', p);
+    } catch (e) {}
+  }
+  if (window.fetch) {
+    var f0 = window.fetch;
+    window.fetch = function (input, init) {
+      var u = '', lido = false;
+      try {
+        u = typeof input === 'string' ? input : (input && input.url);
+        if (isLead(u) && init && init.body) { init = Object.assign({}, init, { body: enrich(init.body) }); lido = true; }
+      } catch (e) {}
+      var r = f0.call(this, input, init);
+      if (lido && r && r.then) r.then(function (res) { if (res && res.ok) lead(init.body); }, function () {});
+      return r;
+    };
+  }
+})();

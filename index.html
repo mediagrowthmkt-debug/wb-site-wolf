@@ -400,6 +400,21 @@ h4 { font-size: 1rem; }
   line-height: 1.8;
 }
 .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 60px; }
+.hero__actions + .hero__bbb { margin-top: -36px; }
+.hero__bbb { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 40px; }
+.hero__bbb img { height: 52px; width: auto; display: block; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+.hero__bbb-text { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,.85); line-height: 1.4; }
+.hero__bbb-text strong { display: block; color: var(--gold); font-size: 0.95rem; letter-spacing: 0.06em; }
+.trust-item--bbb { flex-basis: 100%; justify-content: center; }
+.trust-item--bbb img { height: 40px; width: auto; display: block; border-radius: 8px; flex-shrink: 0; }
+.footer-bbb { display: inline-flex; align-items: center; gap: 12px; margin-top: 4px; }
+.footer-bbb img { height: 46px; width: auto; display: block; border-radius: 8px; }
+.footer-bbb span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray); line-height: 1.4; }
+@media (max-width: 768px) {
+  .hero__actions + .hero__bbb { margin-top: -32px; }
+  .hero__bbb { margin-bottom: 32px; gap: 12px; }
+  .hero__bbb img { height: 44px; }
+}
 .hero__badges {
   display: flex;
   align-items: center;
@@ -2128,6 +2143,10 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
       </a>
       <a href="services" class="btn btn--outline">Explore Services</a>
     </div>
+    <div class="hero__bbb" data-reveal data-reveal-delay="2">
+      <img src="images/badges/bbb-accredited-a-plus.webp" width="589" height="156" alt="BBB Accredited Business with an A+ Rating, Wolf Carpenters" decoding="async" />
+      <span class="hero__bbb-text"><strong>BBB Accredited Business</strong>A+ Rating</span>
+    </div>
     <div class="hero__badges" data-reveal data-reveal-delay="3">
       <div class="hero__badge">
         <span class="hero__badge-num">+1,230</span>
@@ -2536,6 +2555,10 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
 <div class="trust-bar" data-reveal>
   <div class="container">
     <div class="trust-bar__inner">
+      <div class="trust-item trust-item--bbb">
+        <img src="images/badges/bbb-accredited-a-plus.webp" width="589" height="156" alt="BBB Accredited Business with an A+ Rating, Wolf Carpenters" loading="lazy" decoding="async" />
+        <div><strong>BBB Accredited</strong> A+ Rating</div>
+      </div>
       <div class="trust-item">
         <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         <div><strong>Licensed & Insured</strong> Massachusetts State Contractor</div>
@@ -2796,6 +2819,10 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
           View All Google Reviews
         </a>
         <a href="#lead" class="btn btn--primary btn--sm" data-leadsite-open>Get a Free Estimate</a>
+        <div class="footer-bbb">
+          <img src="images/badges/bbb-accredited-a-plus.webp" width="589" height="156" alt="BBB Accredited Business with an A+ Rating, Wolf Carpenters" loading="lazy" decoding="async" />
+          <span>BBB Accredited Business<br>A+ Rating</span>
+        </div>
       </div>
     </div>
   </div>
