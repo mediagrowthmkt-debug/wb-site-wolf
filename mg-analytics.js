@@ -148,7 +148,7 @@
   document.addEventListener('click', function(e) {
     var t = e.target;
     var call = hit(t, SEL.call);
-    if (call) track('click_call', { label: 'call', link_href: call.href || null, link_text: (call.textContent || '').trim().slice(0, 80) });
+    if (call) { var dg = (call.getAttribute('href') || '').replace(/\D/g, '').slice(-10); track('click_call', { label: 'call', link_href: call.href || null, link_text: (call.textContent || '').trim().slice(0, 80), phone_number: dg || null, phone_line: dg === '9787978315' ? 'seo' : (dg === '9784193358' ? 'main' : 'other'), traffic_origin: window.MG_TRAFFIC_ORIGIN || null }); }
     var wa = hit(t, SEL.whatsapp);
     if (wa) track('click_whatsapp', { label: 'whatsapp', link_href: wa.href || null, link_text: (wa.textContent || '').trim().slice(0, 80) });
     var est = hit(t, SEL.estimate);

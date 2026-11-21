@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://wolfcarpenters.com/sitemap.xml
+Sitemap: https://wolfcarpenters.com/sitemap-novas.xml
