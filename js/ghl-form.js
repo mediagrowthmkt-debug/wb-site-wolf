@@ -49,6 +49,11 @@
       manual_human_check: true,
       human_validation_method: 'manual_checkbox_fallback',
     };
+    // origem da visita (js/mg-clid.js): mg_origin, utm_*, gclid/gbraid/wbraid/fbclid, landing_page
+    if (typeof window.mgLeadAttr === 'function') {
+      const attr = window.mgLeadAttr();
+      Object.keys(attr).forEach((k) => { if (payload[k] === undefined || payload[k] === '') payload[k] = attr[k]; });
+    }
 
     const res = await fetch(ENDPOINT, {
       method:  'POST',
