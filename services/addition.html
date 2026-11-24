@@ -11,10 +11,12 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" /></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/styles.css" />
+<link rel="preload" as="image" href="/images/wp-uploads/2024/08/img-3.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="../css/styles.css?v=20261124" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Home Additions Peabody MA | Built On Time | Wolf" />
@@ -312,6 +314,8 @@
 <script>window.MG_CONV_CFG={form:"form[data-feedback]"};</script>
 <script src="/mg-analytics.js" defer></script>
 <script src="/js/seo-phone.js?v=2" defer></script>
+<script src="/js/lead-reserva.js?v=1" defer></script>
+<script src="/js/mg-perf.js?v=1" defer></script>
 <script src="/js/mg-clid.js?v=1" defer></script>
 </head>
 <body>
@@ -423,7 +427,7 @@
   <div class="container">
     <div class="about-story__grid" data-reveal>
       <div>
-        <video class="about-story__img" autoplay muted loop playsinline preload="metadata"
+        <video data-mg-autoplay class="about-story__img" muted loop playsinline preload="none"
              poster="/videos/pages/home-addition-poster.webp" style="aspect-ratio:9/16;max-height:640px;width:auto;max-width:100%;margin:0 auto;display:block;background:#111;"
              aria-label="Home addition construction by Wolf Carpenters in Peabody, MA & North Shore">
           <source src="/videos/pages/home-addition.mp4" type="video/mp4" />
@@ -456,7 +460,7 @@
     <div class="addition-stats" data-reveal>
       <div><div style="font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;">500+</div><div style="color:var(--gray);font-size:.85rem;margin-top:8px;text-transform:uppercase;letter-spacing:.06em;">Families Served</div></div>
       <div><div style="font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;">10+</div><div style="color:var(--gray);font-size:.85rem;margin-top:8px;text-transform:uppercase;letter-spacing:.06em;">Years Family Business</div></div>
-      <div><div style="font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;">8&ndash;16</div><div style="color:var(--gray);font-size:.85rem;margin-top:8px;text-transform:uppercase;letter-spacing:.06em;">Weeks Typical Timeline</div></div>
+      <div><div style="font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;">8-16</div><div style="color:var(--gray);font-size:.85rem;margin-top:8px;text-transform:uppercase;letter-spacing:.06em;">Weeks Typical Timeline</div></div>
       <div><div style="font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;">100%</div><div style="color:var(--gray);font-size:.85rem;margin-top:8px;text-transform:uppercase;letter-spacing:.06em;">Licensed &amp; Insured</div></div>
     </div>
   </div>
@@ -890,8 +894,7 @@
       </form>
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+    <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
     var modal=document.getElementById('leadModalSite'), form=document.getElementById('leadModalSiteForm');

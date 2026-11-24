@@ -33,8 +33,11 @@
   }
 
   async function sendToGHL(form) {
-    // Honeypot: se o campo oculto "company" veio preenchido, e bot -> descarta em silencio
-    if (getVal(form, 'company')) return { skipped: true };
+    // Honeypot: o js/lead-reserva.js marca o envio (mg_hp) e o n8n etiqueta pra revisao, em vez de sumir com o lead.
+    // Nunca manda envio vazio: sem nome ou sem telefone/e-mail, para aqui (corrige o envio vazio do popup, 24-11-26).
+    if (!getVal(form, 'name') || !(getVal(form, 'email') || getVal(form, 'phone'))) throw new Error('empty');
+    if (form.dataset.mgSending === '1') throw new Error('busy');
+    form.dataset.mgSending = '1';
 
     const msg = getVal(form, 'message');
     const payload = {
@@ -55,14 +58,19 @@
       Object.keys(attr).forEach((k) => { if (payload[k] === undefined || payload[k] === '') payload[k] = attr[k]; });
     }
 
-    const res = await fetch(ENDPOINT, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(payload),
-    });
-
-    if (!res.ok) throw new Error(`Server ${res.status}`);
-    return res.json();
+    try {
+      // envio reserva automatico (n8n fora/lento) no js/lead-reserva.js
+      const res = await fetch(ENDPOINT, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Server ${res.status}`);
+      return res.json().catch(() => ({}));
+    } finally {
+      // segura o botao por 3 s depois do envio: um segundo clique nao manda de novo
+      setTimeout(() => { form.dataset.mgSending = ''; }, 3000);
+    }
   }
 
   function setBtn(btn, html, disabled) {

@@ -9,8 +9,10 @@
   <link rel="icon" href="https://wolfcarpenters.com/images/wp-uploads/2024/05/cropped-logo-wolf-desktop-32x32.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" /></noscript>
+<link rel="preload" as="image" href="/images/wp-uploads/2024/08/img-3.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="css/styles.css?v=20261124" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1Z5VEGBBJ"></script>
   <script>
@@ -274,6 +276,8 @@
 <script>window.MG_CONV_CFG={form:"form[data-feedback]"};</script>
 <script src="/mg-analytics.js" defer></script>
 <script src="/js/seo-phone.js?v=2" defer></script>
+<script src="/js/lead-reserva.js?v=1" defer></script>
+<script src="/js/mg-perf.js?v=1" defer></script>
 <script src="/js/mg-clid.js?v=1" defer></script>
 </head>
 <body>
@@ -728,8 +732,7 @@
       </form>
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+    <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
     var modal=document.getElementById('leadModalSite'), form=document.getElementById('leadModalSiteForm');

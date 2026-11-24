@@ -11,10 +11,12 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" /></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/styles.css" />
+<link rel="preload" as="image" href="/images/wp-uploads/2024/08/img-3.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="../css/styles.css?v=20261124" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Home Remodeling Peabody MA | Wolf Carpenters" />
@@ -309,6 +311,8 @@
 <script>window.MG_CONV_CFG={form:"form[data-feedback]"};</script>
 <script src="/mg-analytics.js" defer></script>
 <script src="/js/seo-phone.js?v=2" defer></script>
+<script src="/js/lead-reserva.js?v=1" defer></script>
+<script src="/js/mg-perf.js?v=1" defer></script>
 <script src="/js/mg-clid.js?v=1" defer></script>
 </head>
 <body>
@@ -429,7 +433,7 @@
         <div class="section-tag">Home Renovations</div>
         <h2>Your Home,<br><span class="gold">Reimagined</span></h2>
         <p style="color:var(--gray);line-height:1.75;margin-bottom:20px;">
-          Whether you're updating a single room or transforming your entire home, Wolf Carpenters brings decades of combined craftsmanship to every project. We've remodeled hundreds of homes throughout Peabody, Salem, Lynn, Danvers, and Peabody, MA & North Shore — and every one reflects our commitment to quality, attention to detail, and client satisfaction.
+          Whether you're updating a single room or transforming your entire home, Wolf Carpenters brings decades of combined craftsmanship to every project. We've remodeled hundreds of homes throughout Peabody, Salem, Lynn, Danvers, and Peabody, MA & North Shore, and every one reflects our commitment to quality, attention to detail, and client satisfaction.
         </p>
         <p style="color:var(--gray);line-height:1.75;margin-bottom:20px;">
           Our home remodeling services go far beyond cosmetic updates. We handle structural framing and layout changes, insulation, drywall, finish carpentry, trim and molding, built-in cabinetry, shelving, and custom millwork. If it's part of your home, we can build or renovate it.
@@ -485,7 +489,7 @@
         <div class="why-card__num">04</div>
         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.07.09h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
         <h3>Structural Framing</h3>
-        <p>We handle load-bearing wall modifications, room additions, basement finishing, and attic conversions — all properly permitted and inspected to Massachusetts building code.</p>
+        <p>We handle load-bearing wall modifications, room additions, basement finishing, and attic conversions, all properly permitted and inspected to Massachusetts building code.</p>
       </div>
 
       <div class="why-card" data-reveal data-reveal-delay="2">
@@ -499,7 +503,7 @@
         <div class="why-card__num">06</div>
         <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
         <h3>Basement &amp; Attic Finishing</h3>
-        <p>Convert unused basement and attic space into functional living areas — home offices, playrooms, guest suites, or media rooms — with proper insulation and fire-rated finishes.</p>
+        <p>Convert unused basement and attic space into functional living areas (home offices, playrooms, guest suites, or media rooms) with proper insulation and fire-rated finishes.</p>
       </div>
 
     </div>
@@ -880,7 +884,7 @@ function moveCarousel(trackId, dir) {
 </script>
 
 <script src="../js/main.js"></script>
-<script src="../js/ghl-form.js"></script>
+<script src="../js/ghl-form.js?v=20261124"></script>
 <style id="lead-modal-css-site">
 .lead-modal[hidden]{display:none}
 .lead-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Roboto',sans-serif}
@@ -994,8 +998,7 @@ function moveCarousel(trackId, dir) {
       </form>
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+    <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
     var modal=document.getElementById('leadModalSite'), form=document.getElementById('leadModalSiteForm');

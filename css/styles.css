@@ -32,10 +32,20 @@
 
 html { scroll-behavior: smooth; }
 
+/* fonte de reserva com as medidas do Roboto: a troca de fonte não empurra o layout (CLS) */
+@font-face {
+  font-family: 'Roboto Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  ascent-override: 92.77%;
+  descent-override: 24.41%;
+  line-gap-override: 0%;
+  size-adjust: 100.3%;
+}
+
 body {
   background: var(--dark);
   color: var(--white);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', 'Roboto Fallback', sans-serif;
   font-size: 16px;
   line-height: 1.65;
   overflow-x: hidden;
@@ -1793,3 +1803,20 @@ p a:not(.btn):not([class*="btn"]):not(.cta-banner__phone) {
 .mobile-menu .mobile-cta a { display:inline-flex; flex:1 1 0; justify-content:center; padding:14px 14px; border-bottom:none !important; font-size:0.78rem; letter-spacing:0.04em; white-space:nowrap; }
 .mobile-menu .mobile-cta .btn--gold { color:#0a0a0a !important; }
 .mobile-menu .mobile-cta .btn--outline { color:#ffffff !important; }
+
+/* mg 21-11-26: Our Team (pagina /team/ + bloco no fim das paginas) */
+.team-strip{background:var(--dark);padding:72px 0}
+.team-strip__head{text-align:center;max-width:760px;margin:0 auto 36px}
+.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin:0 auto 34px}
+.team-card{margin:0;background:var(--black);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;text-align:center}
+.team-card__photo{aspect-ratio:4/5;background:#1b1b1b;display:flex;align-items:center;justify-content:center}
+.team-card__photo img{width:100%;height:100%;object-fit:cover;display:block}
+.team-card__initials{font-size:2.6rem;font-weight:900;color:var(--black);background:var(--gold);width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.team-card figcaption{padding:16px 12px 18px}
+.team-card figcaption strong{display:block;color:#fff;font-size:1.08rem}
+.team-card figcaption span{display:block;color:var(--gold);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.team-grid--mini .team-card__photo{aspect-ratio:1/1}
+.team-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.team-intro img{width:100%;border-radius:16px;display:block}
+@media (max-width:992px){.team-grid{grid-template-columns:repeat(3,1fr)}.team-intro{grid-template-columns:1fr;gap:28px}}
+@media (max-width:768px){.team-grid{grid-template-columns:repeat(2,1fr);gap:14px}.team-strip{padding:56px 0}.team-grid .team-card:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 7px);justify-self:center}}

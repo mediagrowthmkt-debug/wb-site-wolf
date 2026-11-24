@@ -11,10 +11,12 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" /></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/styles.css" />
+<link rel="preload" as="image" href="/images/wp-uploads/2024/08/img-3.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="../css/styles.css?v=20261124" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Commercial Construction North Shore, MA | Wolf Carpenters" />
@@ -309,6 +311,8 @@
 <script>window.MG_CONV_CFG={form:"form[data-feedback]"};</script>
 <script src="/mg-analytics.js" defer></script>
 <script src="/js/seo-phone.js?v=2" defer></script>
+<script src="/js/lead-reserva.js?v=1" defer></script>
+<script src="/js/mg-perf.js?v=1" defer></script>
 <script src="/js/mg-clid.js?v=1" defer></script>
 </head>
 <body>
@@ -432,7 +436,7 @@
           Your business environment speaks volumes about your brand. At Wolf Carpenters, we specialize in building and transforming commercial spaces that are not only functional but also leave a lasting impression on your clients, employees, and visitors.
         </p>
         <p style="color:var(--gray);line-height:1.75;margin-bottom:20px;">
-          From the first consultation to the final walkthrough, our commercial construction team manages every detail — millwork, partitions, flooring, lighting, and fixtures — ensuring your project is delivered on schedule and within budget. We've completed commercial projects throughout Peabody, Salem, Lynn, Beverly, and Boston's North Shore.
+          From the first consultation to the final walkthrough, our commercial construction team manages every detail (millwork, partitions, flooring, lighting, and fixtures) ensuring your project is delivered on schedule and within budget. We've completed commercial projects throughout Peabody, Salem, Lynn, Beverly, and Boston's North Shore.
         </p>
         <p style="color:var(--gray);line-height:1.75;margin-bottom:32px;">
           We understand how critical it is to minimize downtime for your operations. Our team works efficiently and, where necessary, after hours or over weekends to keep your business running while we transform your space.
@@ -566,7 +570,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="testi-text">"We hired Wolf Carpenters to fit out our new office in Peabody. The result was stunning — high-end millwork, custom reception desk, and perfect lighting. They worked evenings so we didn't lose a single business day."</p>
+        <p class="testi-text">"We hired Wolf Carpenters to fit out our new office in Peabody. The result was stunning: high-end millwork, custom reception desk, and perfect lighting. They worked evenings so we didn't lose a single business day."</p>
         <div class="testi-author">
           <div style="width:44px;height:44px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--black);">R</div>
           <div>
@@ -584,7 +588,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="testi-text">"Our restaurant remodel in Beverly came out exactly how we envisioned it. Wolf Carpenters built our custom bar, booth seating, and kitchen cabinetry — all on time and within our budget. Outstanding team."</p>
+        <p class="testi-text">"Our restaurant remodel in Beverly came out exactly how we envisioned it. Wolf Carpenters built our custom bar, booth seating, and kitchen cabinetry, all on time and within our budget. Outstanding team."</p>
         <div class="testi-author">
           <div style="width:44px;height:44px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--black);">A</div>
           <div>
@@ -804,7 +808,7 @@ function moveCarousel(trackId, dir) {
 </script>
 
 <script src="../js/main.js"></script>
-<script src="../js/ghl-form.js"></script>
+<script src="../js/ghl-form.js?v=20261124"></script>
 <style id="lead-modal-css-site">
 .lead-modal[hidden]{display:none}
 .lead-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Roboto',sans-serif}
@@ -918,8 +922,7 @@ function moveCarousel(trackId, dir) {
       </form>
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+    <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
     var modal=document.getElementById('leadModalSite'), form=document.getElementById('leadModalSiteForm');

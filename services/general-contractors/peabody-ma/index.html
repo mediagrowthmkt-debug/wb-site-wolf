@@ -13,10 +13,11 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" /></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261124" />
   <link rel="stylesheet" href="/css/seo-local.css" />
 
   <!-- Open Graph -->
@@ -179,6 +180,8 @@
 }
   </script>
 <script src="/js/seo-phone.js?v=2" defer></script>
+<script src="/js/lead-reserva.js?v=1" defer></script>
+<script src="/js/mg-perf.js?v=1" defer></script>
 <script src="/js/mg-clid.js?v=1" defer></script>
 </head>
 <body>
@@ -328,7 +331,7 @@
           <a href="tel:+19787170502" class="btn btn--outline">+1 978-717-0502</a>
         </div>
       </div>
-      <div class="vid-wrap"><video src="/videos/pages/general-contractor-peabody.mp4" poster="/videos/pages/general-contractor-peabody-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="General contractor project in Peabody, MA by Wolf Carpenters" style="display:block;width:100%;height:auto;border-radius:10px;background:#000"></video><button type="button" class="vid-sound" data-vid-sound aria-label="Turn sound on"></button></div>
+      <div class="vid-wrap"><video data-mg-autoplay src="/videos/pages/general-contractor-peabody.mp4" poster="/videos/pages/general-contractor-peabody-poster.jpg" muted loop playsinline preload="none" aria-label="General contractor project in Peabody, MA by Wolf Carpenters" style="display:block;width:100%;height:auto;border-radius:10px;background:#000"></video><button type="button" class="vid-sound" data-vid-sound aria-label="Turn sound on"></button></div>
     </div>
   </section>
 
@@ -371,11 +374,11 @@
             <tr><th>Project type</th><th>What it usually involves</th><th>Typical timeline</th></tr>
           </thead>
           <tbody>
-            <tr><td>Kitchen remodeling</td><td>Layout, cabinetry, counters, plumbing &amp; electrical coordination</td><td>5&ndash;8 weeks</td></tr>
-            <tr><td>Bathroom remodeling</td><td>Waterproofing, tile, fixtures, ventilation</td><td>3&ndash;5 weeks</td></tr>
-            <tr><td>Home additions</td><td>Foundation, framing, roof tie-in, finishes</td><td>3&ndash;6 months</td></tr>
-            <tr><td>Whole-home remodeling</td><td>Multi-room renovation, layout changes, finishes</td><td>2&ndash;5 months</td></tr>
-            <tr><td>Decks &amp; exterior</td><td>Framing, decking, railings, permits</td><td>2&ndash;4 weeks</td></tr>
+            <tr><td>Kitchen remodeling</td><td>Layout, cabinetry, counters, plumbing &amp; electrical coordination</td><td>5-8 weeks</td></tr>
+            <tr><td>Bathroom remodeling</td><td>Waterproofing, tile, fixtures, ventilation</td><td>3-5 weeks</td></tr>
+            <tr><td>Home additions</td><td>Foundation, framing, roof tie-in, finishes</td><td>3-6 months</td></tr>
+            <tr><td>Whole-home remodeling</td><td>Multi-room renovation, layout changes, finishes</td><td>2-5 months</td></tr>
+            <tr><td>Decks &amp; exterior</td><td>Framing, decking, railings, permits</td><td>2-4 weeks</td></tr>
           </tbody>
         </table>
       </div>
@@ -509,7 +512,7 @@
         <details><summary>What does a general contractor actually do?</summary><p>A general contractor manages your whole project: pulling Peabody permits, scheduling every trade, ordering materials, running the site day to day, and keeping the job on budget and on time. With us, the same in-house crew that plans it also builds it.</p></details>
         <details><summary>Do you use subcontractors in Peabody?</summary><p>No. We run a 100% in-house crew, that's our "no subcontractors, no shortcuts" model. The team you meet at the estimate is the team on your job site.</p></details>
         <details><summary>Do you pull the building permits in Peabody?</summary><p>Yes. We handle permitting with Peabody Inspectional Services and coordinate inspections, so you don't deal with the paperwork.</p></details>
-        <details><summary>How long does a project take?</summary><p>A bathroom typically takes 3&ndash;5 weeks, a kitchen 5&ndash;8 weeks, and a home addition 3&ndash;6 months once permits clear. You get a written schedule with milestones.</p></details>
+        <details><summary>How long does a project take?</summary><p>A bathroom typically takes 3-5 weeks, a kitchen 5-8 weeks, and a home addition 3-6 months once permits clear. You get a written schedule with milestones.</p></details>
         <details><summary>How do I get started?</summary><p>Call +1 978-717-0502 or request a free estimate through our contact page. We review your scope, timeline, and budget and send a clear written proposal.</p></details>
       </div>
       <aside class="seo-panel">
@@ -658,8 +661,7 @@
       </form>
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+    <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
     var SERVICE='General Contractor';
@@ -907,7 +909,7 @@ I Recommend Wolf for any job they do pretty much everything about construction.<
               </div>
               <div class="footer-contact__text">
                 <strong>Working Hours</strong>
-                Mon&ndash;Fri: 7am &ndash; 4pm<br>
+                Mon-Fri: 7am to 4pm<br>
                 <span style="color:var(--gray);font-size:.85rem;">Closed Sat, Sun &amp; holidays</span>
               </div>
             </div>

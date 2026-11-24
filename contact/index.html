@@ -10,8 +10,10 @@
   <link rel="icon" href="https://wolfcarpenters.com/images/wp-uploads/2024/05/cropped-logo-wolf-desktop-32x32.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" /></noscript>
+<link rel="preload" as="image" href="/images/wp-uploads/2024/08/img-3.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="css/styles.css?v=20261124" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1Z5VEGBBJ"></script>
   <script>
@@ -275,6 +277,8 @@
 <script>window.MG_CONV_CFG={form:"form[data-feedback]"};</script>
 <script src="/mg-analytics.js" defer></script>
 <script src="/js/seo-phone.js?v=2" defer></script>
+<script src="/js/lead-reserva.js?v=1" defer></script>
+<script src="/js/mg-perf.js?v=1" defer></script>
 <script src="/js/mg-clid.js?v=1" defer></script>
 </head>
 <body>
@@ -487,7 +491,7 @@
           <div class="contact-info-card__body">
             <h4>Business Hours</h4>
             <div style="color:var(--gray);font-size:0.9rem;line-height:2;">
-              <div style="display:flex;justify-content:space-between;"><span>Monday – Friday</span><span style="color:var(--gold);font-weight:600;">7:00 AM – 4:00 PM</span></div>
+              <div style="display:flex;justify-content:space-between;"><span>Monday to Friday</span><span style="color:var(--gold);font-weight:600;">7:00 AM to 4:00 PM</span></div>
               <div style="display:flex;justify-content:space-between;"><span>Saturday</span><span style="color:var(--gray);">Closed</span></div>
               <div style="display:flex;justify-content:space-between;"><span>Sunday</span><span style="color:var(--gray);">Closed</span></div>
               <div style="display:flex;justify-content:space-between;"><span>Holidays</span><span style="color:var(--gray);">Closed</span></div>
@@ -616,7 +620,7 @@
 </div>
 
 <script src="js/main.js"></script>
-<script src="js/ghl-form.js"></script>
+<script src="js/ghl-form.js?v=20261124"></script>
 <style id="lead-modal-css-site">
 .lead-modal[hidden]{display:none}
 .lead-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Roboto',sans-serif}
@@ -730,8 +734,7 @@
       </form>
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+    <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
     var modal=document.getElementById('leadModalSite'), form=document.getElementById('leadModalSiteForm');

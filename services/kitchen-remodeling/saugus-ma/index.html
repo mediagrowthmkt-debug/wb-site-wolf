@@ -13,10 +13,11 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@700;900&display=swap" /></noscript>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css?v=20261124" />
   <link rel="stylesheet" href="/css/seo-local.css" />
 
   <!-- Open Graph -->
@@ -421,6 +422,8 @@
 }
   </script>
 <script src="/js/seo-phone.js?v=2" defer></script>
+<script src="/js/lead-reserva.js?v=1" defer></script>
+<script src="/js/mg-perf.js?v=1" defer></script>
 <script src="/js/mg-clid.js?v=1" defer></script>
 </head>
 <body>
@@ -570,7 +573,7 @@
           <a href="tel:+19787170502" class="btn btn--outline">+1 978-717-0502</a>
         </div>
       </div>
-      <div class="vid-wrap"><video src="/videos/seo/kitchen.mp4" poster="/videos/seo/kitchen-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Kitchen remodeling by Wolf Carpenters" style="display:block;width:100%;height:auto;border-radius:10px;background:#000"></video><button type="button" class="vid-sound" data-vid-sound aria-label="Turn sound on"></button></div>
+      <div class="vid-wrap"><video width="540" height="960" data-mg-autoplay src="/videos/seo/kitchen.mp4" poster="/videos/seo/kitchen-poster.jpg" muted loop playsinline preload="none" aria-label="Kitchen remodeling by Wolf Carpenters" style="display:block;width:100%;height:auto;border-radius:10px;background:#000"></video><button type="button" class="vid-sound" data-vid-sound aria-label="Turn sound on"></button></div>
     </div>
   </section>
 
@@ -771,7 +774,7 @@
               </div>
               <div class="footer-contact__text">
                 <strong>Working Hours</strong>
-                Mon–Fri: 7am – 4pm<br>
+                Mon-Fri: 7am to 4pm<br>
                 <span style="color:var(--gray);font-size:.85rem;">Closed Sat, Sun &amp; holidays</span>
               </div>
             </div>
@@ -926,8 +929,7 @@
       </form>
     </div>
   </div>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
+    <script>
   (function(){
     var ENDPOINT='https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
     var modal=document.getElementById('leadModalSite'), form=document.getElementById('leadModalSiteForm');

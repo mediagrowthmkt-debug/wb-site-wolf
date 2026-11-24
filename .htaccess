@@ -3,6 +3,15 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# www -> sem www (301, mantém caminho e query). Só casa o host www exato: subdomínios (decks., additions., basement., kitchen., bathroom.) não são afetados.
+RewriteCond %{HTTP_HOST} ^www\.wolfcarpenters\.com$ [NC]
+RewriteRule ^(.*)$ https://wolfcarpenters.com/$1 [R=301,L]
+
+# Página que é arquivo .html (ex.: /blog/5-signs-kitchen-remodel): a versão com barra no fim vai pra URL canônica sem barra (evita URL duplicada).
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)/$ https://wolfcarpenters.com/$1 [R=301,L]
+
 # Serve clean URLs from matching .html files on Hostinger/LiteSpeed.
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
