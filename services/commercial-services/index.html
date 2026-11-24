@@ -846,7 +846,39 @@
 
 
   <!-- wolf-google-reviews -->
-  <section class="section grev" aria-label="Google reviews">
+  <!-- mg 24-11-26: galeria de obras recentes (fotos reais 2026) -->
+<section class="section gallery-strip mg-gal" style="background:var(--dark);">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag" style="justify-content:center;">Recent Work</div>
+      <h2 class="section-title">Commercial Project <span class="gold">Gallery</span></h2>
+      <p class="section-subtitle">Recent commercial facades, windows and office build-outs by Wolf Carpenters.</p>
+    </div>
+    <div class="photo-carousel" style="margin-top:48px;">
+      <div class="photo-carousel__track" id="cmTrack">
+        <div class="photo-carousel__slide">
+          <img width="1200" height="1600" src="/images/gallery/commercial/commercial-building-windows-siding-essex-ma.webp" alt="New window cluster and siding on a commercial building in Essex, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1199" height="1600" src="/images/gallery/commercial/commercial-facade-siding-windows-essex-ma.webp" alt="Commercial building facade with new siding, trim and windows in Essex, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1172" height="1600" src="/images/gallery/commercial/commercial-window-trim-replacement-essex-ma.webp" alt="Commercial window and trim replacement on a bank building in Essex, MA" loading="lazy" decoding="async" />
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button aria-label="Previous" onclick="moveCarousel('cmTrack',-1)">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button aria-label="Next" onclick="moveCarousel('cmTrack',1)">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section grev" aria-label="Google reviews">
     <div class="container">
       <div class="grev-head">
         <div class="section-tag">Reviews</div>
@@ -1042,5 +1074,8 @@
   </a>
 </div>
 <script src="/js/main.js"></script>
+<script>
+if(!window.moveCarousel){window.moveCarousel=function(trackId,dir){var t=document.getElementById(trackId);if(!t)return;var s=t.querySelector('.photo-carousel__slide');if(!s)return;var w=s.offsetWidth+12;var vis=Math.max(1,Math.round(t.parentElement.offsetWidth/w));var max=Math.max(0,(t.children.length-vis)*w);var c=parseInt(t.dataset.offset||0);c=Math.max(0,Math.min(c+dir*w,max));t.dataset.offset=c;t.style.transform='translateX(-'+c+'px)';};}
+</script>
 </body>
 </html>

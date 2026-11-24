@@ -676,21 +676,42 @@
   
 
 <!-- mg 24-11-26: galeria de decks recentes (fotos reais 2026) -->
-<style>.dk-gal__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}.dk-gal__item{margin:0;border-radius:14px;overflow:hidden;background:#1b1b1b;aspect-ratio:4/5}.dk-gal__item img{width:100%;height:100%;object-fit:cover;display:block}@media (max-width:768px){.dk-gal__grid{grid-template-columns:repeat(2,1fr);gap:10px}}</style>
-<section class="section dk-gal" style="background:var(--dark);">
+<section class="section gallery-strip dk-gal" style="background:var(--dark);">
   <div class="container">
     <div class="text-center">
       <div class="section-tag" style="justify-content:center;">Recent Work</div>
       <h2 class="section-title">Deck &amp; Porch <span class="gold">Gallery</span></h2>
       <p class="section-subtitle">Recent decks, porches and stairs built by our in-house crew across the North Shore.</p>
     </div>
-    <div class="dk-gal__grid">
-        <figure class="dk-gal__item"><img width="1544" height="1600" src="/images/gallery/deck/composite-deck-lattice-skirting-essex-ma.webp" alt="Composite deck with white railing and lattice skirting built by Wolf Carpenters in Essex, MA" loading="lazy" decoding="async" /></figure>
-        <figure class="dk-gal__item"><img width="1465" height="1600" src="/images/gallery/deck/composite-deck-stairs-essex-ma.webp" alt="New composite deck stairs and white vinyl railing in Essex, MA" loading="lazy" decoding="async" /></figure>
-        <figure class="dk-gal__item"><img width="1500" height="1600" src="/images/gallery/deck/composite-deck-white-railing-essex-ma.webp" alt="Finished backyard composite deck with white railing in Essex, MA" loading="lazy" decoding="async" /></figure>
-        <figure class="dk-gal__item"><img width="1199" height="1600" src="/images/gallery/deck/front-porch-composite-stairs-beverly-ma.webp" alt="Front porch with new composite stairs and white railing in Beverly, MA" loading="lazy" decoding="async" /></figure>
-        <figure class="dk-gal__item"><img width="1125" height="1600" src="/images/gallery/deck/porch-stairs-white-railing-beverly-ma.webp" alt="Close view of composite porch stairs with white railing in Beverly, MA" loading="lazy" decoding="async" /></figure>
-        <figure class="dk-gal__item"><img width="1064" height="1600" src="/images/gallery/deck/composite-entry-steps-marblehead-ma.webp" alt="Composite entry steps with white railing over a paver patio in Marblehead, MA" loading="lazy" decoding="async" /></figure>
+    <div class="photo-carousel" style="margin-top:48px;">
+      <div class="photo-carousel__track" id="dkTrack">
+        <div class="photo-carousel__slide">
+          <img width="1544" height="1600" src="/images/gallery/deck/composite-deck-lattice-skirting-essex-ma.webp" alt="Composite deck with white railing and lattice skirting built by Wolf Carpenters in Essex, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1465" height="1600" src="/images/gallery/deck/composite-deck-stairs-essex-ma.webp" alt="New composite deck stairs and white vinyl railing in Essex, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1500" height="1600" src="/images/gallery/deck/composite-deck-white-railing-essex-ma.webp" alt="Finished backyard composite deck with white railing in Essex, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1199" height="1600" src="/images/gallery/deck/front-porch-composite-stairs-beverly-ma.webp" alt="Front porch with new composite stairs and white railing in Beverly, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1125" height="1600" src="/images/gallery/deck/porch-stairs-white-railing-beverly-ma.webp" alt="Close view of composite porch stairs with white railing in Beverly, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1064" height="1600" src="/images/gallery/deck/composite-entry-steps-marblehead-ma.webp" alt="Composite entry steps with white railing over a paver patio in Marblehead, MA" loading="lazy" decoding="async" />
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button aria-label="Previous" onclick="moveCarousel('dkTrack',-1)">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button aria-label="Next" onclick="moveCarousel('dkTrack',1)">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -1209,5 +1230,8 @@
   })();
   </script>
 
+<script>
+if(!window.moveCarousel){window.moveCarousel=function(trackId,dir){var t=document.getElementById(trackId);if(!t)return;var s=t.querySelector('.photo-carousel__slide');if(!s)return;var w=s.offsetWidth+12;var vis=Math.max(1,Math.round(t.parentElement.offsetWidth/w));var max=Math.max(0,(t.children.length-vis)*w);var c=parseInt(t.dataset.offset||0);c=Math.max(0,Math.min(c+dir*w,max));t.dataset.offset=c;t.style.transform='translateX(-'+c+'px)';};}
+</script>
 </body>
 </html>
