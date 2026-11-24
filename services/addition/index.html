@@ -646,15 +646,56 @@
       <h2 class="section-title">Recent Home <span class="gold">Additions</span></h2>
       <p class="section-subtitle">Real additions built by our in-house crew across Peabody, MA &amp; the North Shore. No subcontractors, no shortcuts.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:48px;">
-      <img width="1311" height="705" src="/images/gallery/addition/project-1.webp" alt="Home addition project by Wolf Carpenters in the North Shore" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
-      <img width="1500" height="2000" src="/images/gallery/addition/project-3.webp" alt="Second story home addition by Wolf Carpenters" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
-      <img width="1536" height="2048" src="/images/gallery/addition/project-4.webp" alt="Room addition project by Wolf Carpenters in Peabody MA" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
-      <img width="1350" height="1800" src="/images/gallery/addition/build-1.webp" alt="Home addition foundation and framing by Wolf Carpenters" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
-      <img width="800" height="1066" src="/images/gallery/addition/build-2.webp" alt="Complete framing structure of a home addition" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
-      <img width="800" height="1066" src="/images/gallery/addition/build-3.webp" alt="ZIP System sheathing on a home addition by Wolf Carpenters" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
-      <img width="765" height="1024" src="/images/gallery/addition/build-4.webp" alt="Completed home addition with siding and windows" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
-      <img width="1620" height="2048" src="/images/gallery/addition/project-2.webp" alt="Finished home addition seamlessly integrated by Wolf Carpenters" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--border);height:auto;" />
+    <div class="photo-carousel" style="margin-top:48px;">
+      <div class="photo-carousel__track" id="adTrack">
+        <div class="photo-carousel__slide">
+          <img width="1600" height="1205" src="/images/gallery/addition/home-addition-covered-porch-rockport-ma.webp" alt="Home addition with covered porch built by Wolf Carpenters in Rockport, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1135" height="1600" src="/images/gallery/addition/home-addition-exterior-lights-rockport-ma.webp" alt="Finished home addition exterior with porch stairs in Rockport, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1064" height="1600" src="/images/gallery/addition/home-addition-interior-stairs-rockport-ma.webp" alt="New interior staircase inside a home addition in Rockport, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1184" height="1600" src="/images/gallery/addition/rear-addition-deck-stairs-danvers-ma.webp" alt="Rear home addition with sliding door and composite stairs in Danvers, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1200" height="1600" src="/images/gallery/addition/rear-addition-composite-stairs-danvers-ma.webp" alt="Rear addition entry with composite stairs and white railing in Danvers, MA" loading="lazy" decoding="async" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1311" height="705" src="/images/gallery/addition/project-1.webp" alt="Home addition project by Wolf Carpenters in the North Shore" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1500" height="2000" src="/images/gallery/addition/project-3.webp" alt="Second story home addition by Wolf Carpenters" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1536" height="2048" src="/images/gallery/addition/project-4.webp" alt="Room addition project by Wolf Carpenters in Peabody MA" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1350" height="1800" src="/images/gallery/addition/build-1.webp" alt="Home addition foundation and framing by Wolf Carpenters" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="800" height="1066" src="/images/gallery/addition/build-2.webp" alt="Complete framing structure of a home addition" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="800" height="1066" src="/images/gallery/addition/build-3.webp" alt="ZIP System sheathing on a home addition by Wolf Carpenters" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="765" height="1024" src="/images/gallery/addition/build-4.webp" alt="Completed home addition with siding and windows" loading="lazy" />
+        </div>
+        <div class="photo-carousel__slide">
+          <img width="1620" height="2048" src="/images/gallery/addition/project-2.webp" alt="Finished home addition seamlessly integrated by Wolf Carpenters" loading="lazy" />
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button aria-label="Previous" onclick="moveCarousel('adTrack',-1)">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button aria-label="Next" onclick="moveCarousel('adTrack',1)">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
     <div class="text-center" style="margin-top:40px;">
       <a href="#lead" class="btn btn--gold" data-leadsite-open>Start My Home Addition &rarr;</a>
@@ -1126,5 +1167,8 @@
   })();
   </script>
 
+<script>
+if(!window.moveCarousel){window.moveCarousel=function(trackId,dir){var t=document.getElementById(trackId);if(!t)return;var s=t.querySelector('.photo-carousel__slide');if(!s)return;var w=s.offsetWidth+12;var vis=Math.max(1,Math.round(t.parentElement.offsetWidth/w));var max=Math.max(0,(t.children.length-vis)*w);var c=parseInt(t.dataset.offset||0);c=Math.max(0,Math.min(c+dir*w,max));t.dataset.offset=c;t.style.transform='translateX(-'+c+'px)';};}
+</script>
 </body>
 </html>
