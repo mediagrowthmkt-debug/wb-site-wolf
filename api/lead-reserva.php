@@ -11,6 +11,7 @@
 declare(strict_types=1);
 
 const N8N_URL      = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/wolf-site-lead';
+const N8N_URL_LP   = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/53d5ad38-b5b8-496a-ab98-b204a15068a9';   // fluxo das LPs (basement, kitchen, bathroom, additions, decks)
 const GHL_API      = 'https://services.leadconnectorhq.com';
 const GHL_LOCATION = 'xZgZbZ25TgMXr6HsImkO';
 const GHL_PIPELINE = 'TocqOL1wNKEHv2442s9M';
@@ -53,6 +54,7 @@ $raw = $TESTE ? (string)getenv('WOLF_RESERVA_BODY') : (string)file_get_contents(
 if ($raw === '' || strlen($raw) > MAX_BODY) { responde(400, ['ok' => false]); return; }
 $b = json_decode($raw, true);
 if (!is_array($b)) { responde(400, ['ok' => false]); return; }
+$ehLp = s($b['mg_tipo'] ?? '') === 'lp' || (isset($b['PLATAFORMA']) && isset($b['campaign_name']));   // lead de landing page (webhook do fluxo de LP)
 
 /* ── pasta de registro: fora da pasta pública quando possível ── */
 $docRoot = rtrim((string)($_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
@@ -97,11 +99,13 @@ if ($nome === '' || ($email === '' && $phone === '')) { responde(422, ['ok' => f
 $spam = [];
 if (s($b['mg_hp'] ?? '') !== '' || s($b['company'] ?? '') !== '') $spam[] = 'campo escondido preenchido';
 if (isset($b['mg_fill_s']) && is_numeric($b['mg_fill_s']) && (int)$b['mg_fill_s'] < 4) $spam[] = 'preenchido em ' . (int)$b['mg_fill_s'] . ' s';
+if ($ehLp && s($b['honeypot'] ?? '') !== '') $spam[] = 'campo escondido preenchido';
+if ($ehLp && isset($b['form_elapsed_ms']) && is_numeric($b['form_elapsed_ms']) && (int)$b['form_elapsed_ms'] < 3000) $spam[] = 'preenchido em ' . round((int)$b['form_elapsed_ms'] / 1000, 1) . ' s';
 if (preg_match_all('#https?://#i', $msg) >= 2 || preg_match('#https?://|www\.#i', $nome)) $spam[] = 'links no texto';
 if (preg_match('/[\x{0400}-\x{04FF}\x{4E00}-\x{9FFF}]/u', $nome . ' ' . $msg)) $spam[] = 'alfabeto estrangeiro';
 
 /* ── canal (mesmo mapa do n8n "Prepara lead") ── */
-$pageUrl = s($b['page_url'] ?? '') ?: (preg_match('/Page:\s*(\S+)/', $msg, $m) ? $m[1] : '');
+$pageUrl = s($b['page_url'] ?? '') ?: s($b['FONTE'] ?? '') ?: (preg_match('/Page:\s*(\S+)/', $msg, $m) ? $m[1] : '');
 $path = strtolower(preg_replace('#^https?://[^/]+#', '', explode('?', explode('#', $pageUrl)[0])[0]));
 $qs = [];
 foreach ([s($b['landing_page'] ?? ''), $pageUrl] as $u) { $q = []; parse_str((string)parse_url($u, PHP_URL_QUERY), $q); $qs[] = $q; }
@@ -116,6 +120,12 @@ elseif (preg_match('/^(cpc|ppc)$/', $um)) $canal = 'google-ads';
 elseif (in_array($org, $validos, true)) $canal = $org;
 elseif ($org === 'organic') $canal = 'seo';
 else $canal = (s($b['source'] ?? '') === 'blog/artigo' || preg_match('#^/(blog|service-areas)/|^/services/[^/]+/[^/]+#', $path)) ? 'seo' : 'site';
+if ($ehLp) {   // mesmo mapa do n8n "Prepara lead" (TIPO lp): o caminho da página manda mais que a PLATAFORMA enviada
+    $plat = strtoupper(s($b['PLATAFORMA'] ?? ''));
+    if (preg_match('#/meta#', $path)) $plat = 'META'; elseif (preg_match('#/pinterest#', $path)) $plat = 'PINTEREST'; elseif (preg_match('#/google#', $path)) $plat = 'GOOGLE';
+    $canal = ['META' => 'meta-ads', 'PINTEREST' => 'pinterest-ads'][$plat] ?? 'google-ads';
+}
+$campTag = $ehLp ? strtolower(s($b['campaign_name'] ?? '')) : '';
 $tagCanal = ['site' => 'site-wolf', 'seo' => 'seo-wolf', 'gbp' => 'gbp-wolf', 'google-ads' => 'google-wolf', 'meta-ads' => 'meta-wolf', 'pinterest-ads' => 'pinterest-wolf'][$canal];
 $prefixo  = ['gbp' => 'GBP', 'seo' => 'SEO', 'site' => 'SITE', 'google-ads' => 'GOOGLE', 'meta-ads' => 'META', 'pinterest-ads' => 'PINTEREST'][$canal];
 
@@ -144,7 +154,12 @@ function http_json(string $metodo, string $url, ?array $corpo, array $hdr, int $
 
 /* ── 1) n8n de novo, pelo servidor ── */
 $fwd = $b; $fwd['mg_reserva'] = 'servidor';
-[$c8n] = $TESTE ? [(int)(getenv('WOLF_RESERVA_N8N') ?: 0), []] : http_json('POST', N8N_URL, $fwd, [], 6);
+if ($ehLp) {   // o token do reCAPTCHA já foi gasto no navegador: o n8n das LPs só aceita o aviso de verificação manual, senão descartaria este lead
+    unset($fwd['recaptcha_token']);
+    $fwd['manual_human_check'] = true;
+    $fwd['human_validation_method'] = 'manual_checkbox_fallback';
+}
+[$c8n] = $TESTE ? [(int)(getenv('WOLF_RESERVA_N8N') ?: 0), []] : http_json('POST', $ehLp ? N8N_URL_LP : N8N_URL, $fwd, [], 6);
 if ($c8n >= 200 && $c8n < 300) {
     $registro(['destino' => 'n8n (pelo servidor)']);
     responde(200, ['ok' => true, 'via' => 'n8n']);
@@ -158,15 +173,16 @@ if ($cfgFile && is_file($cfgFile)) { $tmp = include $cfgFile; if (is_array($tmp)
 $token = s($cfg['ghl_token'] ?? '');
 $ghl = ['feito' => false];
 $tags = [$tagCanal, 'lead-wolf', TAG_RESERVA];
+if ($campTag !== '') array_splice($tags, 1, 0, [$campTag]);   // LP: a etiqueta da campanha separa basement x additions x deck x kitchen x bathroom no CRM
 if ($spam) $tags[] = TAG_SPAM;
 $partes = preg_split('/\s+/', $nome);
-$oppName = ($spam ? 'REVISAR SPAM - ' : '') . $prefixo . ' - ' . $nome . (s($b['service'] ?? '') ? ' · ' . s($b['service'] ?? '') : '');
-$linhasNota = ['New lead from the website (BACKUP PATH: n8n was down, motivo ' . s($b['mg_reserva_motivo'] ?? '?') . ', channel: ' . $canal . ')'];
+$oppName = ($spam ? 'REVISAR SPAM - ' : '') . $prefixo . ' - ' . $nome . (($srv = s($b['service'] ?? '') ?: ($ehLp ? (s($b['Qualified_question'] ?? '') ?: s($b['campaign_name'] ?? '')) : '')) !== '' ? ' · ' . $srv : '');
+$linhasNota = ['New lead from the ' . ($ehLp ? 'landing page' : 'website') . ' (BACKUP PATH: n8n was down, motivo ' . s($b['mg_reserva_motivo'] ?? '?') . ', channel: ' . $canal . ')'];
 if ($spam) $linhasNota[] = 'POSSIBLE SPAM, please review: ' . implode(', ', $spam);
 if ($pageUrl) $linhasNota[] = 'Page: ' . $pageUrl;
 $linhasNota[] = '';
 foreach ($b as $k => $v) {
-    if (in_array($k, ['recaptcha_token', 'g-recaptcha-response', 'company', 'manual_human_check', 'human_validation_method', 'mg_envio_id'], true)) continue;
+    if (in_array($k, ['recaptcha_token', 'g-recaptcha-response', 'company', 'honeypot', 'manual_human_check', 'human_validation_method', 'human_validation', 'form_elapsed_ms', 'mg_envio_id', 'mg_tipo'], true)) continue;
     if ($v === '' || $v === null) continue;
     $linhasNota[] = $k . ': ' . (is_scalar($v) ? (string)$v : json_encode($v));
 }
@@ -182,7 +198,8 @@ if ($token && !$TESTE) {
     $cf = [];
     if ($msg) $cf[] = ['key' => 'brief_description_of_your_situation', 'field_value' => $msg];
     if (s($b['service'] ?? '')) $cf[] = ['key' => 'service', 'field_value' => s($b['service'] ?? '')];
-    $clid = ['gclid' => 'hM7sKanKzFDAgtqmpZw2', 'gbraid' => 'aZkvHQMuo2CIc59o5pQt', 'wbraid' => 'l9zKvjSyHadd6mqfSCKy', 'fbclid' => 'QA5J9Ubv994E1AZiNQNO'];
+    if ($ehLp && s($b['campaign_name'] ?? '') !== '') $cf[] = ['key' => 'campanha', 'field_value' => s($b['campaign_name'] ?? '')];
+    $clid = ['gclid' => 'hM7sKanKzFDAgtqmpZw2', 'gbraid' => 'aZkvHQMuo2CIc59o5pQt', 'wbraid' => 'l9zKvjSyHadd6mqfSCKy', 'fbclid' => 'QA5J9Ubv994E1AZiNQNO', 'fbc' => 'b6Xz2suyIt5NzObMDDfS', 'fbp' => 'DEiiRqnlNWXF0I7nwiSM'];
     foreach ($clid as $k => $id) if ($p($k)) $cf[] = ['id' => $id, 'field_value' => $p($k)];
     if ($cf) $up['customFields'] = $cf;
     [$cu, $ju] = http_json('POST', GHL_API . '/contacts/upsert', $up, $H, 12);
@@ -205,8 +222,8 @@ if ($token && !$TESTE) {
 }
 
 /* ── 3) e-mail pra equipe (n8n fora = sempre avisa) ── */
-$assunto = ($spam ? '[REVIEW: possible spam] ' : '') . 'New website lead (backup): ' . $nome;
-$corpoEmail = "A new lead came in through the website backup path (the main form system was offline).\n"
+$assunto = ($spam ? '[REVIEW: possible spam] ' : '') . ($ehLp ? 'New landing page lead (backup): ' : 'New website lead (backup): ') . $nome;
+$corpoEmail = "A new lead came in through the " . ($ehLp ? 'landing page' : 'website') . " backup path (the main form system was offline).\n"
     . ($ghl['feito'] ? "It was also created in the CRM (contact " . $ghl['contato'] . ").\n" : "It is NOT in the CRM yet: please add it manually.\n")
     . "\n" . $nota . "\n";
 $enviou = false;
